@@ -380,28 +380,6 @@ class const BehaviorPage({super.key}) extends HookConsumerWidget {
                 ),
               ),
             ),
-            if (defaultTargetPlatform
-                case TargetPlatform.android || TargetPlatform.iOS)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.aria.enableSpellCheck),
-                    value: settings.enableSpellCheck,
-                    onChanged: (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setEnableSpellCheck(value),
-                    shape: defaultTargetPlatform == TargetPlatform.iOS
-                        ? const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              bottom: Radius.circular(8.0),
-                            ),
-                          )
-                        : null,
-                  ),
-                ),
-              ),
             if (defaultTargetPlatform == TargetPlatform.android)
               Center(
                 child: Container(

@@ -345,6 +345,64 @@ class const AppearancePage({super.key}) extends HookConsumerWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.misskey.postForm,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.showCharacterCount),
+                  value: settings.showCharacterCount,
+                  onChanged: (value) => Future.wait([
+                    ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowCharacterCount(value),
+                  ]),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: const Radius.circular(8.0),
+                      bottom: switch (defaultTargetPlatform) {
+                        TargetPlatform.android ||
+                        TargetPlatform.iOS => Radius.zero,
+                        _ => const Radius.circular(8.0),
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            if (defaultTargetPlatform
+                case TargetPlatform.android || TargetPlatform.iOS)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(t.aria.enableSpellCheck),
+                    value: settings.enableSpellCheck,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setEnableSpellCheck(value),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             if (defaultTargetPlatform
                 case TargetPlatform.android || TargetPlatform.iOS) ...[
               const SizedBox(height: 16.0),

@@ -134,6 +134,8 @@ GeneralSettings _$GeneralSettingsFromJson(
       json['showSmallTimelinesPageButtons'] as bool? ?? false,
   showSquaredTimelinesPageButtons:
       json['showSquaredTimelinesPageButtons'] as bool? ?? false,
+  showCharacterCount: json['showCharacterCount'] as bool? ?? false,
+  enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
   showImageInNotification: json['showImageInNotification'] as bool? ?? true,
   showEmojiInReactionNotification:
       json['showEmojiInReactionNotification'] as bool? ?? false,
@@ -169,7 +171,6 @@ GeneralSettings _$GeneralSettingsFromJson(
       $enumDecodeNullable(_$LaunchModeEnumMap, json['launchMode']) ??
       LaunchMode.externalApplication,
   mediaSaveLocation: json['mediaSaveLocation'] as String?,
-  enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
   enablePredictiveBack: json['enablePredictiveBack'] as bool? ?? false,
   enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
   timelinesPageSpringStiffness:
@@ -288,6 +289,8 @@ Map<String, dynamic> _$GeneralSettingsToJson(
       .toList(),
   'showSmallTimelinesPageButtons': instance.showSmallTimelinesPageButtons,
   'showSquaredTimelinesPageButtons': instance.showSquaredTimelinesPageButtons,
+  'showCharacterCount': instance.showCharacterCount,
+  'enableSpellCheck': instance.enableSpellCheck,
   'showImageInNotification': instance.showImageInNotification,
   'showEmojiInReactionNotification': instance.showEmojiInReactionNotification,
   'enableInfiniteScroll': instance.enableInfiniteScroll,
@@ -307,7 +310,6 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'hidePostFormAfterPost': instance.hidePostFormAfterPost,
   'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
   'mediaSaveLocation': ?instance.mediaSaveLocation,
-  'enableSpellCheck': instance.enableSpellCheck,
   'enablePredictiveBack': instance.enablePredictiveBack,
   'enableHorizontalSwipe': instance.enableHorizontalSwipe,
   'timelinesPageSpringStiffness': instance.timelinesPageSpringStiffness,

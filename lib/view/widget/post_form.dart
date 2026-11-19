@@ -261,9 +261,9 @@ class const PostForm({
         !account.value.isGuest &&
         (draft.copyWith(fileIds: null).canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
-    final enableSpellCheck = ref.watch(
+    final (showCharacterCount, enableSpellCheck) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.enableSpellCheck,
+        (settings) => (settings.showCharacterCount, settings.enableSpellCheck),
       ),
     );
     final useCw = useState(useMemoized(() => draft.cw?.isNotEmpty ?? false));
@@ -892,7 +892,10 @@ class const PostForm({
                       ),
                     ),
                     textInputAction: TextInputAction.next,
-                    maxLength: (draft.cw?.length ?? 0) > 80 ? 100 : null,
+                    maxLength:
+                        showCharacterCount || (draft.cw?.length ?? 0) > 80
+                        ? 100
+                        : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
                     spellCheckConfiguration: enableSpellCheck
                         ? const SpellCheckConfiguration()
@@ -900,6 +903,8 @@ class const PostForm({
                   ),
                 ),
               ),
+              if (showCharacterCount || (draft.cw?.length ?? 0) > 80)
+                const SizedBox(height: 8.0),
               const Divider(height: 0.0),
             ],
             Padding(
@@ -915,7 +920,10 @@ class const PostForm({
                 autofocus: true,
                 minLines: 1,
                 maxLines: maxLines,
-                maxLength: (draft.text?.length ?? 0) > 2900 ? 3000 : null,
+                maxLength:
+                    showCharacterCount || (draft.text?.length ?? 0) > 2900
+                    ? 3000
+                    : null,
                 maxLengthEnforcement: MaxLengthEnforcement.none,
                 contextMenuBuilder: (context, editableTextState) =>
                     AdaptiveTextSelectionToolbar.editable(
