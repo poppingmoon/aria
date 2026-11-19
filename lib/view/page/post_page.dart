@@ -154,7 +154,7 @@ class const PostPage({
                             hashtagFocusNode: hashtagFocusNode,
                             onAccountChanged: (newAccount) =>
                                 account.value = newAccount,
-                            shouldPop: true,
+                            onPosted: (_) => context.pop(),
                           ),
                         ),
                       ),

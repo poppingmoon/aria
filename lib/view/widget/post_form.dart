@@ -76,7 +76,6 @@ class const PostForm({
   final void Function(Account account)? onAccountChanged,
   final void Function(Note note)? onPosted,
   final bool showPostButton = false,
-  final bool shouldPop = false,
   final int? maxLines,
   final double thumbnailSize = 200.0,
 }) extends HookConsumerWidget {
@@ -455,9 +454,6 @@ class const PostForm({
           if (canPost) {
             final result = await post(ref, account.value, noteId);
             if (!context.mounted) return;
-            if (shouldPop && result != null) {
-              context.pop();
-            }
             if (result != null) {
               onPosted?.call(result);
             }
@@ -482,9 +478,6 @@ class const PostForm({
                 post: (ref, account, noteId) async {
                   final result = await post(ref, account, noteId);
                   if (!ref.context.mounted) return;
-                  if (shouldPop && result != null) {
-                    context.pop();
-                  }
                   if (result != null) {
                     onPosted?.call(result);
                   }
