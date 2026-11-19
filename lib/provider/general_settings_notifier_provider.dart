@@ -497,6 +497,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setEnableSpellCheck(bool enableSpellCheck) async {
+    state = state.copyWith(enableSpellCheck: enableSpellCheck);
+    await _save();
+  }
+
   Future<void> setShowImageInNotification(bool showImageInNotification) async {
     state = state.copyWith(showImageInNotification: showImageInNotification);
     await _save();
@@ -600,11 +605,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setMediaSaveLocation(String? mediaSaveLocation) async {
     state = state.copyWith(mediaSaveLocation: mediaSaveLocation);
-    await _save();
-  }
-
-  Future<void> setEnableSpellCheck(bool enableSpellCheck) async {
-    state = state.copyWith(enableSpellCheck: enableSpellCheck);
     await _save();
   }
 

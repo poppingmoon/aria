@@ -129,6 +129,7 @@ class const GeneralSettings({
   final bool showSmallTimelinesPageButtons = false,
   final bool showSquaredTimelinesPageButtons = false,
   final bool showCharacterCount = false,
+  final bool enableSpellCheck = false,
   final bool showImageInNotification = true,
   final bool showEmojiInReactionNotification = false,
 
@@ -148,7 +149,6 @@ class const GeneralSettings({
   final bool hidePostFormAfterPost = false,
   final LaunchMode launchMode = LaunchMode.externalApplication,
   final String? mediaSaveLocation,
-  final bool enableSpellCheck = false,
   final bool enablePredictiveBack = false,
   final bool enableHorizontalSwipe = true,
   final double timelinesPageSpringStiffness =
