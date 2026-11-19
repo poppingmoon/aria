@@ -10,6 +10,8 @@ import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/searched_queries_notifier_provider.dart';
+import '../../../util/lookup.dart';
+import '../../dialog/confirmation_dialog.dart';
 import 'search_notes.dart';
 import 'search_users.dart';
 
@@ -119,8 +121,20 @@ class const SearchPage({
                           ]
                         : null,
                     onTapOutside: (_) => focusNode.unfocus(),
-                    onSubmitted: (value) {
+                    onSubmitted: (value) async {
                       final trimmed = value.trim();
+                      if (trimmed.startsWith(RegExp('(https?://|[@#])')) &&
+                          !trimmed.contains(RegExp(r'\s'))) {
+                        final confirmed = await confirm(
+                          context,
+                          message: t.misskey.lookupConfirm,
+                        );
+                        if (!context.mounted) return;
+                        if (confirmed) {
+                          await lookup(ref, account, trimmed);
+                          return;
+                        }
+                      }
                       query.value = trimmed;
                       if (trimmed.isNotEmpty) {
                         ref
