@@ -256,6 +256,9 @@ class Translations$aria$en_US {
 	/// en-US: 'Guest'
 	String get guest => 'Guest';
 
+	/// en-US: 'Hide post form after posting'
+	String get hidePostFormAfterPost => 'Hide post form after posting';
+
 	/// en-US: 'Aria is being translated into various languages by volunteers. You can help at {link}.'
 	TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria is being translated into various languages by volunteers. You can help at '),

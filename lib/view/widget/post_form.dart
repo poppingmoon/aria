@@ -74,6 +74,7 @@ class const PostForm({
   final void Function()? onHide,
   final void Function(Account account)? onExpand,
   final void Function(Account account)? onAccountChanged,
+  final void Function(Note note)? onPosted,
   final bool showPostButton = false,
   final bool shouldPop = false,
   final int? maxLines,
@@ -457,6 +458,9 @@ class const PostForm({
             if (shouldPop && result != null) {
               context.pop();
             }
+            if (result != null) {
+              onPosted?.call(result);
+            }
           }
         }),
       },
@@ -480,6 +484,9 @@ class const PostForm({
                   if (!ref.context.mounted) return;
                   if (shouldPop && result != null) {
                     context.pop();
+                  }
+                  if (result != null) {
+                    onPosted?.call(result);
                   }
                 },
                 onAccountChanged: (newAccount) {

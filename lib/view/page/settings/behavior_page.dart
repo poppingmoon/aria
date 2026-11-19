@@ -296,6 +296,19 @@ class const BehaviorPage({super.key}) extends HookConsumerWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.hidePostFormAfterPost),
+                  value: settings.hidePostFormAfterPost,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setHidePostFormAfterPost(value),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
                 child: ListTile(
                   title: Text(t.aria.webBrowser),
                   subtitle: Text(switch (settings.launchMode) {
