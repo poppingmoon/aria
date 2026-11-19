@@ -492,6 +492,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowCharacterCount(bool showCharacterCount) async {
+    state = state.copyWith(showCharacterCount: showCharacterCount);
+    await _save();
+  }
+
   Future<void> setShowImageInNotification(bool showImageInNotification) async {
     state = state.copyWith(showImageInNotification: showImageInNotification);
     await _save();

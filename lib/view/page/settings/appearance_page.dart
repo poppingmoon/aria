@@ -345,6 +345,40 @@ class const AppearancePage({super.key}) extends HookConsumerWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.misskey.postForm,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.showCharacterCount),
+                  value: settings.showCharacterCount,
+                  onChanged: (value) => Future.wait([
+                    ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowCharacterCount(value),
+                  ]),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             if (defaultTargetPlatform
                 case TargetPlatform.android || TargetPlatform.iOS) ...[
               const SizedBox(height: 16.0),

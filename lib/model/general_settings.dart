@@ -128,6 +128,7 @@ class const GeneralSettings({
       defaultTimelinesPageButtonTypes,
   final bool showSmallTimelinesPageButtons = false,
   final bool showSquaredTimelinesPageButtons = false,
+  final bool showCharacterCount = false,
   final bool showImageInNotification = true,
   final bool showEmojiInReactionNotification = false,
 

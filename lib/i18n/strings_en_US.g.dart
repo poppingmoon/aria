@@ -542,6 +542,9 @@ class Translations$aria$en_US {
 	/// en-US: 'Show alt text'
 	String get showCaption => 'Show alt text';
 
+	/// en-US: 'Show character count'
+	String get showCharacterCount => 'Show character count';
+
 	/// en-US: 'Show emoji in reaction notifications'
 	String get showEmojiInReactionNotification => 'Show emoji in reaction notifications';
 
