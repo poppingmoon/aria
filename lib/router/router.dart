@@ -68,6 +68,7 @@ import '../view/page/settings/drive_settings_page.dart';
 import '../view/page/settings/emoji_picker_page.dart';
 import '../view/page/settings/import_export_page.dart';
 import '../view/page/settings/languages_page.dart';
+import '../view/page/settings/lockdown_page.dart';
 import '../view/page/settings/mute_block_page.dart';
 import '../view/page/settings/muted_users_page.dart';
 import '../view/page/settings/note_display_page.dart';
@@ -239,6 +240,16 @@ GoRouter router(Ref ref) {
                         state.pathParameters['acct']!,
                       ),
                     ),
+                    routes: [
+                      GoRoute(
+                        path: 'lockdown',
+                        builder: (_, state) => LockdownPage(
+                          account: Account.fromString(
+                            state.pathParameters['acct']!,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'profile',

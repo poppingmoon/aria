@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -6,6 +7,8 @@ import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
+import '../../../provider/api/endpoint_parameters_provider.dart';
+import '../../../provider/api/endpoints_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
@@ -21,6 +24,23 @@ class const PrivacyPage({super.key, required final Account account})
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).value;
+    final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
+    final isLockdownAvailable =
+        i?.requireSigninToViewContents != null ||
+        i?.makeNotesFollowersOnlyBefore != null ||
+        i?.makeNotesHiddenBefore != null ||
+        (ref.watch(
+          endpointParametersProvider(account, 'i/update').select(
+            (params) => switch (params.value) {
+              final params? =>
+                params.any(
+                      (param) => param.name == 'requireSigninToViewContents',
+                    ) &&
+                    params.every((param) => param.name != 'viewingLangs'),
+              _ => false,
+            },
+          ),
+        ));
     final theme = Theme.of(context);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
@@ -240,65 +260,6 @@ class const PrivacyPage({super.key, required final Account account})
                 ),
               ),
             ],
-            if (i?.canChat != null) ...[
-              const SizedBox(height: 16.0),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    t.misskey.directMessage,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8.0),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.chat_.chatAllowedUsers),
-                    subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      final result = await showRadioDialog(
-                        context,
-                        title: Text(t.misskey.chat_.chatAllowedUsers),
-                        header: Card.filled(
-                          color: colors.infoBg,
-                          margin: EdgeInsets.zero,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              t.misskey.chat_.chatAllowedUsers_note,
-                              style: TextStyle(color: colors.infoFg),
-                            ),
-                          ),
-                        ),
-                        values: ChatScope.values,
-                        initialValue: i?.chatScope,
-                        titleBuilder: (context, chatScope) =>
-                            _ChatScopeWidget(chatScope: chatScope),
-                      );
-                      if (!context.mounted) return;
-                      if (result != null) {
-                        await futureWithDialog(
-                          context,
-                          ref
-                              .read(iNotifierProvider(account).notifier)
-                              .setChatScope(result),
-                        );
-                      }
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
-            ],
             const SizedBox(height: 16.0),
             Center(
               child: Container(
@@ -502,6 +463,97 @@ class const PrivacyPage({super.key, required final Account account})
                 ),
               ),
             ),
+            if (i?.canChat != null &&
+                (endpoints?.contains('chat/history') ?? true)) ...[
+              const SizedBox(height: 16.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    t.misskey.directMessage,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.chat_.chatAllowedUsers),
+                    subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.chat_.chatAllowedUsers),
+                        header: Card.filled(
+                          color: colors.infoBg,
+                          margin: EdgeInsets.zero,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              t.misskey.chat_.chatAllowedUsers_note,
+                              style: TextStyle(color: colors.infoFg),
+                            ),
+                          ),
+                        ),
+                        values: ChatScope.values,
+                        initialValue: i?.chatScope,
+                        titleBuilder: (context, chatScope) =>
+                            _ChatScopeWidget(chatScope: chatScope),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setChatScope(result),
+                        );
+                      }
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+            if (isLockdownAvailable) ...[
+              const SizedBox(height: 16.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    t.misskey.lockdown,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.lockdown),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () => context.push(
+                      '/settings/accounts/$account/privacy/lockdown',
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
             const SizedBox(height: 8.0),
           ],
         ),

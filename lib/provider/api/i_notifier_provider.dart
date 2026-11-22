@@ -226,6 +226,51 @@ class INotifier extends _$INotifier {
     state = AsyncValue.data(i);
   }
 
+  Future<void> setRequireSigninToViewContents(
+    bool requireSigninToViewContents,
+  ) async {
+    final i = await _misskey.i.update(
+      IUpdateRequest(requireSigninToViewContents: requireSigninToViewContents),
+    );
+    state = AsyncValue.data(i);
+  }
+
+  Future<void> setMakeNotesFollowersOnlyBefore(
+    HideBefore? makeNotesFollowersOnlyBefore,
+  ) async {
+    if (makeNotesFollowersOnlyBefore != null) {
+      final i = await _misskey.i.update(
+        IUpdateRequest(
+          makeNotesFollowersOnlyBefore: makeNotesFollowersOnlyBefore,
+        ),
+      );
+      state = AsyncValue.data(i);
+    } else {
+      final response = await _misskey.apiService.post<Map<String, dynamic>>(
+        'i/update',
+        {'makeNotesFollowersOnlyBefore': null},
+      );
+      state = AsyncValue.data(MeDetailed.fromJson(response));
+    }
+  }
+
+  Future<void> setMakeNotesHiddenBefore(
+    HideBefore? makeNotesHiddenBefore,
+  ) async {
+    if (makeNotesHiddenBefore != null) {
+      final i = await _misskey.i.update(
+        IUpdateRequest(makeNotesHiddenBefore: makeNotesHiddenBefore),
+      );
+      state = AsyncValue.data(i);
+    } else {
+      final response = await _misskey.apiService.post<Map<String, dynamic>>(
+        'i/update',
+        {'makeNotesHiddenBefore': null},
+      );
+      state = AsyncValue.data(MeDetailed.fromJson(response));
+    }
+  }
+
   Future<void> setAlwaysMarkSensitive(bool alwaysMarkSensitive) async {
     final i = await _misskey.i.update(
       IUpdateRequest(alwaysMarkNsfw: alwaysMarkSensitive),
