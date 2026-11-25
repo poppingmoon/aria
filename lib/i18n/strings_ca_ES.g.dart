@@ -248,6 +248,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get editList => 'Editar llista';
 	@override String get selectChannel => 'Selecciona un canal';
 	@override String get selectAntenna => 'Tria una antena';
+	@override String get selectClip => 'Seleccioneu un fragment';
 	@override String get editAntenna => 'Modificar antena';
 	@override String get createAntenna => 'Crea una antena';
 	@override String get selectWidget => 'Triar un giny';
@@ -444,6 +445,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => 'Introduïu el nom de la carpeta nova';
 	@override String get circularReferenceFolder => 'La carpeta destinatària és una subcarpeta de la carpeta a la qual la desitges moure';
 	@override String get hasChildFilesOrFolders => 'No és possible esborrar aquesta carpeta ja que no és buida';
+	@override String get uploadFolderDeletionConfirm => 'Aquesta carpeta ha estat designada com a destinació predeterminada per a les pujades. Si l\'elimineu, ja no serà la destinació predeterminada i els fitxers pujaran al directori arrel.';
 	@override String get copyUrl => 'Copia l\'URL';
 	@override String get rename => 'Canvia el nom';
 	@override String get avatar => 'Icona';
@@ -1102,6 +1104,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => 'Ha fallat la pujada del fitxer perquè no hi ha capacitat al Disc.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Aquest fitxer no es pot pujar perquè supera la mida permesa.';
 	@override String get cannotUploadBecauseUnallowedFileType => 'Impossible pujar l\'arxiu no és un tipus de fitxer autoritzat.';
+	@override String get cannotUploadBecauseNoSuchFolder => 'No es pot trobar la carpeta de pujada. Si us plau, comproveu la configuració de la ubicació de pujada per defecte.';
 	@override String get beta => 'Proves';
 	@override String get enableAutoSensitive => 'Marcar com a sensible automàticament ';
 	@override String get enableAutoSensitiveDescription => 'Permet la detecció i el marcat automàtic dels mitjans sensibles fent servir aprenentatge automàtic quan sigui possible. Si aquesta opció es troba desactivada potser que estigui activada per a tota la instància. ';
@@ -1386,6 +1389,8 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => 'Fes servir la UI del navegador quan reprodueixis vídeo i àudio ';
 	@override String get keepOriginalFilename => 'Desa el nom del fitxer original';
 	@override String get keepOriginalFilenameDescription => 'Si desactives aquesta opció els noms dels fitxers se substituiran per una cadena aleatòria quan carreguis nous fitxers de forma automàtica.';
+	@override String get cannotSelectSensitiveMedia => 'No podeu seleccionar mitjans sensibles';
+	@override String get cannotSelectSensitiveMediaDescription => 'Si aquest error apareix tot i que no heu marcat el contingut com a sensible vosaltres mateixos, pot ser que s\'hagi considerat un mitjà sensible per una detecció automàtica.\nSi, d\'acord amb les normes del servidor, no cal que ho sigui, desactiveu la configuració de contingut sensible del fitxer i torneu-ho a provar.';
 	@override String get noDescription => 'No hi ha una descripció ';
 	@override String get alwaysConfirmFollow => 'Confirma sempre els seguiments';
 	@override String get inquiry => 'Contacte';
@@ -1519,6 +1524,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$settings_$ca_ES settings_ = _Translations$misskey$settings_$ca_ES._(_root);
 	@override late final _Translations$misskey$preferencesProfile_$ca_ES preferencesProfile_ = _Translations$misskey$preferencesProfile_$ca_ES._(_root);
 	@override late final _Translations$misskey$preferencesBackup_$ca_ES preferencesBackup_ = _Translations$misskey$preferencesBackup_$ca_ES._(_root);
+	@override late final _Translations$misskey$followApproval_$ca_ES followApproval_ = _Translations$misskey$followApproval_$ca_ES._(_root);
 	@override late final _Translations$misskey$accountSettings_$ca_ES accountSettings_ = _Translations$misskey$accountSettings_$ca_ES._(_root);
 	@override late final _Translations$misskey$abuseUserReport_$ca_ES abuseUserReport_ = _Translations$misskey$abuseUserReport_$ca_ES._(_root);
 	@override late final _Translations$misskey$delivery_$ca_ES delivery_ = _Translations$misskey$delivery_$ca_ES._(_root);
@@ -1791,6 +1797,8 @@ class _Translations$misskey$settings_$ca_ES extends Translations$misskey$setting
 	@override String get settingsPersistence_title => 'Persistència de la configuració ';
 	@override String get settingsPersistence_description1 => 'Habilitar la persistència de la configuració permet que no es perdi la informació de la configuració ';
 	@override String get settingsPersistence_description2 => 'Depenent de l\'entorn pot ser que no puguis habilitar aquesta opció.';
+	@override String get autoplayEmbededPlayerOfUrlPreview => 'Reprodueix automàticament el reproductor incrustat per a les previsualitzacions d\'URL';
+	@override String get expandUrlPreviewAutomatically => 'Expandir automàticament les previsualitzacions d\'URL';
 	@override late final _Translations$misskey$settings_$chat_$ca_ES chat_ = _Translations$misskey$settings_$chat_$ca_ES._(_root);
 }
 
@@ -1825,6 +1833,29 @@ class _Translations$misskey$preferencesBackup_$ca_ES extends Translations$misske
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'La còpia de seguretat automàtica no es troba activada en aquest dispositiu.';
 	@override String get backupFound => 'Còpia de seguretat de la configuració trobada';
 	@override String get forceBackup => 'Còpia de seguretat forçada de la configuració ';
+}
+
+// Path: misskey.followApproval_
+class _Translations$misskey$followApproval_$ca_ES extends Translations$misskey$followApproval_$en_US {
+	_Translations$misskey$followApproval_$ca_ES._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => 'Segueix la sol·licitud aprovada';
+	@override String get inactiveDescription => 'Com que tots els seguiments estaran subjectes a aprovació, no s\'aplicaran els paràmetres basats en el temps. Si desactiveu el sistema d\'aprovació de seguiments, s\'aplicaran de nou els paràmetres següents.';
+	@override String get title => 'Establiu que els seguiments de comptes nous requereixin aprovació.';
+	@override String get autoAcceptDescription => 'Fins i tot si has configurat el teu compte perquè requereixi aprovació per als nous seguidors, o si estàs pendent de sol·licituds de seguiment de nous comptes, les persones que segueixes seran aprovades automàticament.';
+	@override String get description => 'Les sol·licituds de seguiment d\'usuaris que no t\'han seguit durant el període especificat es consideraran sol·licituds de seguiment. Això no afectarà els teus seguidors actuals. Si tens habilitada l\'aprovació automàtica per als usuaris que segueixes, aquests usuaris seran aprovats automàticament.';
+	@override String get local => 'Segueix usuaris locals';
+	@override String get localDescription => 'Això es determina pel temps transcorregut des que es va crear el compte en aquest servidor.';
+	@override String get remote => 'Seguidors d\'usuaris remots';
+	@override String get remoteDescription => 'Això es determina pel temps transcorregut des que aquest servidor va reconèixer per primera vegada aquest compte, en lloc de la data i l\'hora de creació a l\'altre servidor.';
+	@override String get useDefault => 'Utilitzar valors per defecte (actualment desactivat)';
+	@override String get custom => 'Especifiqueu un període';
+	@override String get period => 'Període que requereix aprovació';
+	@override String get unit => 'Unitat';
+	@override String get invalidPeriod => 'La durada és incorrecta. Si us plau, introduïu una durada d\'almenys 1 segon, dins de l\'interval permès.';
 }
 
 // Path: misskey.accountSettings_
@@ -1900,6 +1931,9 @@ class _Translations$misskey$announcement_$ca_ES extends Translations$misskey$ann
 	@override String get forExistingUsersDescription => 'Aquest avís només es mostrarà als usuaris existents fins al moment de la publicació. Si no també es mostrarà als usuaris que es registrin després de la publicació.';
 	@override String get needConfirmationToRead => 'Es necessita confirmació de lectura de la notificació ';
 	@override String get needConfirmationToReadDescription => 'Si s\'activa es mostrarà un diàleg per confirmar la lectura d\'aquesta notificació. A més aquesta notificació serà exclosa de qualsevol funcionalitat com "Marcar tot com a llegit".';
+	@override String get autoArchiveAt => 'Data i hora d\'arxivament automàtic';
+	@override String get autoArchiveAtDescription => 'Un cop hagin passat la data i l\'hora especificades, aquest avís s\'arxivarà automàticament. Si aquest camp es deixa en blanc, no s\'arxivarà automàticament.';
+	@override String get autoArchiveAtMustBeInFuture => 'Indiqueu una data i una hora per a l\'arxivament automàtic posteriors a la data i l\'hora actuals.';
 	@override String get end => 'Final de la notificació ';
 	@override String get tooManyActiveAnnouncementDescription => 'Tenir masses notificacions actives pot empitjorar l\'experiència de l\'usuari. Considera finalitzar els avisos que siguin antics.';
 	@override String get readConfirmTitle => 'Marcar com llegida?';

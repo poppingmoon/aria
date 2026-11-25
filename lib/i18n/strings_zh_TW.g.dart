@@ -1404,6 +1404,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => '使用瀏覽器的 UI 播放影片與音訊';
 	@override String get keepOriginalFilename => '保留原始檔名';
 	@override String get keepOriginalFilenameDescription => '如果關閉此設定，上傳時檔案名稱會自動替換為隨機字串。';
+	@override String get cannotSelectSensitiveMediaDescription => '如果你自己冇設定過敏感內容，但都出現呢個錯誤，咁可能係系統自動判斷呢個媒體係敏感內容。\n如果根據伺服器嘅規則，其實唔需要標記為敏感內容，請解除呢個檔案嘅敏感設定，然後再試多次。';
 	@override String get noDescription => '沒有說明文字';
 	@override String get alwaysConfirmFollow => '追隨時總是確認';
 	@override String get inquiry => '聯絡我們';

@@ -482,6 +482,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get editList => '编辑列表';
 	@override String get selectChannel => '选择频道';
 	@override String get selectAntenna => '选择天线';
+	@override String get selectClip => '选择便签';
 	@override String get editAntenna => '编辑天线';
 	@override String get createAntenna => '创建天线';
 	@override String get selectWidget => '选择小工具';
@@ -495,7 +496,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get addEmoji => '添加表情符号';
 	@override String get settingGuide => '推荐配置';
 	@override String get cacheRemoteFiles => '缓存远程文件';
-	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。此时推荐将  的 proxyRemoteFiles 设置为 true 以优化缩略图生成及保护用户隐私。';
+	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。';
 	@override String get youCanCleanRemoteFilesCache => '可以使用文件管理的🗑️按钮来删除所有的缓存。';
 	@override String get cacheRemoteSensitiveFiles => '缓存远程敏感媒体文件';
 	@override String get cacheRemoteSensitiveFilesDescription => '如果禁用这项设定，远程服务器的敏感媒体将不会被缓存，而是直接链接。';
@@ -678,6 +679,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => '请输入新文件夹名';
 	@override String get circularReferenceFolder => '目标文件夹是要移动的文件夹的子文件夹。';
 	@override String get hasChildFilesOrFolders => '此文件夹中有文件，无法删除。';
+	@override String get uploadFolderDeletionConfirm => '此目录已指定为默认上传目录。删除后文件将被上传至根目录。';
 	@override String get copyUrl => '复制链接';
 	@override String get rename => '重命名';
 	@override String get avatar => '头像';
@@ -758,7 +760,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get antennaUsersDescription => '指定用户名，用换行符进行分隔';
 	@override String get caseSensitive => '区分大小写';
 	@override String get withReplies => '包含回复';
-	@override String get connectedTo => '您的账号已连到接以下第三方账号';
+	@override String get connectedTo => '您的账号已连接到以下第三方账号';
 	@override String get notesAndReplies => '帖子与回复';
 	@override String get withFiles => '附件';
 	@override String get silence => '禁言';
@@ -1013,7 +1015,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get smtpPort => '端口';
 	@override String get smtpUser => '用户名';
 	@override String get smtpPass => '密码';
-	@override String get emptyToDisableSmtpAuth => '用户名和密码留空可以禁用 SMTP 验证';
+	@override String get emptyToDisableSmtpAuth => '将用户名和密码留空可以禁用 SMTP 验证';
 	@override String get smtpSecure => '在 SMTP 连接中使用隐式 SSL / TLS';
 	@override String get smtpSecureInfo => '使用 STARTTLS 时关闭。';
 	@override String get testEmail => '邮件发送测试';
@@ -1220,7 +1222,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get ratio => '比率';
 	@override String get previewNoteText => '预览正文';
 	@override String get customCss => '自定义 CSS';
-	@override String get customCssWarn => '这些设置必须有相关的基础知识，不当的配置可能导致客户端无法正常使用。';
+	@override String get customCssWarn => '进行这些设置必须具备相关的基础知识，不当的配置可能导致客户端无法正常使用。';
 	@override String get global => '全局';
 	@override String get squareAvatars => '显示方形头像图标';
 	@override String get sent => '发送';
@@ -1336,6 +1338,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => '因为已无可用空间，无法上传。';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => '无法上传文件，超过文件大小限制。';
 	@override String get cannotUploadBecauseUnallowedFileType => '因文件类型被禁止而无法上传。';
+	@override String get cannotUploadBecauseNoSuchFolder => '无法上传到目标目录。请确认默认上传目录的设置。';
 	@override String get beta => '测试';
 	@override String get enableAutoSensitive => '自动 NSFW 识别';
 	@override String get enableAutoSensitiveDescription => '使用机器学习在可用时自动使用 NSFW 标记来标记媒体。即使您关闭此功能，根据服务器的不同，它仍然可能会自动设置。';
@@ -1620,6 +1623,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => '使用浏览器的 UI 播放动画及音频';
 	@override String get keepOriginalFilename => '保持原文件名';
 	@override String get keepOriginalFilenameDescription => '若关闭此设置，上传文件时文件名将被替换为随机字符。';
+	@override String get cannotSelectSensitiveMedia => '无法选择敏感媒体';
+	@override String get cannotSelectSensitiveMediaDescription => '若并未自行设为敏感媒体却仍出现此错误，则可能是自动判定将其归类为敏感媒体。如果依服务器规则其并非敏感媒体，则可解除设置再试一次。';
 	@override String get noDescription => '没有描述';
 	@override String get alwaysConfirmFollow => '在关注时始终确认';
 	@override String get inquiry => '联系我们';
@@ -1753,6 +1758,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override late final Translations$misskey$settings_$zh_CN settings_ = Translations$misskey$settings_$zh_CN.internal(_root);
 	@override late final Translations$misskey$preferencesProfile_$zh_CN preferencesProfile_ = Translations$misskey$preferencesProfile_$zh_CN.internal(_root);
 	@override late final Translations$misskey$preferencesBackup_$zh_CN preferencesBackup_ = Translations$misskey$preferencesBackup_$zh_CN.internal(_root);
+	@override late final Translations$misskey$followApproval_$zh_CN followApproval_ = Translations$misskey$followApproval_$zh_CN.internal(_root);
 	@override late final Translations$misskey$accountSettings_$zh_CN accountSettings_ = Translations$misskey$accountSettings_$zh_CN.internal(_root);
 	@override late final Translations$misskey$abuseUserReport_$zh_CN abuseUserReport_ = Translations$misskey$abuseUserReport_$zh_CN.internal(_root);
 	@override late final Translations$misskey$delivery_$zh_CN delivery_ = Translations$misskey$delivery_$zh_CN.internal(_root);
@@ -2025,6 +2031,8 @@ class Translations$misskey$settings_$zh_CN extends Translations$misskey$settings
 	@override String get settingsPersistence_title => '设置持久化';
 	@override String get settingsPersistence_description1 => '启用设置持久化可防止设置信息丢失。';
 	@override String get settingsPersistence_description2 => '根据环境不同，有可能无法开启。';
+	@override String get autoplayEmbededPlayerOfUrlPreview => '自动播放 URL 预览嵌入的播放器';
+	@override String get expandUrlPreviewAutomatically => '自动展开 URL 预览';
 	@override late final Translations$misskey$settings_$chat_$zh_CN chat_ = Translations$misskey$settings_$chat_$zh_CN.internal(_root);
 }
 
@@ -2059,6 +2067,29 @@ class Translations$misskey$preferencesBackup_$zh_CN extends Translations$misskey
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '此设备未开启自动备份';
 	@override String get backupFound => '已找到备份';
 	@override String get forceBackup => '强制备份设置';
+}
+
+// Path: misskey.followApproval_
+class Translations$misskey$followApproval_$zh_CN extends Translations$misskey$followApproval_$en_US {
+	Translations$misskey$followApproval_$zh_CN.internal(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => '批准关注请求';
+	@override String get inactiveDescription => '因为所有的关注请求都需要批准，因此按时间段设置的规则将不再生效。关闭「关注请求需要批准」后下面的设置将重新生效。';
+	@override String get title => '新账户的关注请求需要批准';
+	@override String get autoAcceptDescription => '就算开启了「关注请求需要批准」或「新账户的关注请求需要批准」，您已关注的账户的关注请求将被自动批准。';
+	@override String get description => '注册未达指定时长的账户的关注将作为关注请求予以保留。这不影响现有的关注者。已开启「自动允许我关注的人的关注请求」的话，对方的关注请求将被自动批准。';
+	@override String get local => '从本地用户发来的关注';
+	@override String get localDescription => '以本服务器的账户注册时间来计算时长。';
+	@override String get remote => '从远程用户发来的关注';
+	@override String get remoteDescription => '不是以远程服务器上的注册时间，而是以本服务器最初认知到这个账户的时间来计算时长。';
+	@override String get useDefault => '使用默认值（当前为无效）';
+	@override String get custom => '指定时间段';
+	@override String get period => '批准所需注册时长';
+	@override String get unit => '单位';
+	@override String get invalidPeriod => '输入的时间不正确。请在可输入的范围内输入 1 秒以上的时间。';
 }
 
 // Path: misskey.accountSettings_
@@ -2134,6 +2165,9 @@ class Translations$misskey$announcement_$zh_CN extends Translations$misskey$anno
 	@override String get forExistingUsersDescription => '若启用，该公告将仅对创建此公告时存在的用户可见。 如果禁用，则在创建此公告后注册的用户也可以看到该公告。';
 	@override String get needConfirmationToRead => '需要确认才能标记为已读';
 	@override String get needConfirmationToReadDescription => '若启用，则会在标记已读时会显示确认对话框。此外，它也会不受批量已读操作的影响。';
+	@override String get autoArchiveAt => '自动存档时间';
+	@override String get autoArchiveAtDescription => '当超过指定的时间时，此通知将自动存档。留空则不自动存档。';
+	@override String get autoArchiveAtMustBeInFuture => '请指定晚于当前时间的值。';
 	@override String get end => '结束公告';
 	@override String get tooManyActiveAnnouncementDescription => '若有大量活动公告，可能会造成用户体验下降。请考虑归档已完成的公告。';
 	@override String get readConfirmTitle => '标记为已读？';

@@ -482,6 +482,7 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get editList => 'Liste bearbeiten';
 	@override String get selectChannel => 'Kanal auswählen';
 	@override String get selectAntenna => 'Antenne auswählen';
+	@override String get selectClip => 'Clip auswählen';
 	@override String get editAntenna => 'Antenne bearbeiten';
 	@override String get createAntenna => 'Erstelle eine Antenne';
 	@override String get selectWidget => 'Widget auswählen';
@@ -940,6 +941,8 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get script => 'Skript';
 	@override String get disablePagesScript => 'AiScript auf Seiten deaktivieren';
 	@override String get updateRemoteUser => 'Benutzerinformationen aktualisieren';
+	@override String get unsetMfa => 'Zwei-Faktor-Authentisierung deaktivieren';
+	@override String get unsetMfaConfirm => 'Möchtest du die Zwei-Faktor-Authentisierung wirklich deaktivieren?';
 	@override String get unsetUserAvatar => 'Entferne Profilbild';
 	@override String get unsetUserAvatarConfirm => 'Möchtest du dein Profilbild entfernen?';
 	@override String get unsetUserBanner => 'Entferne Profilbanner';
@@ -1074,6 +1077,8 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Neuen Clip erstellen';
 	@override String get unclip => 'Aus Clip entfernen';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Diese Notiz ist bereits im "${name}" Clip enthalten. Möchtest du sie aus diesem Clip entfernen?';
+	@override String get removeFromAntenna => 'Aus dieser Antenne entfernen';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Möchtest du wirklich diese Notiz aus ${name} entfernen?';
 	@override String get public => 'Öffentlich';
 	@override String get private => 'Privat';
 	@override String i18nInfo({required Object link}) => 'Misskey wird durch freiwillige Helfer in viele verschiedene Sprachen übersetzt. Auf ${link} kannst du mithelfen.';
@@ -1539,6 +1544,7 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Link-Besitz wurde verifiziert';
 	@override String get notifyNotes => 'Über neue Notizen benachrichtigen';
 	@override String get unnotifyNotes => 'Nicht über neue Notizen benachrichtigen';
+	@override String get notifyUsers => 'Benutzer mit aktivierten Beitragsbenachrichtigungen';
 	@override String get authentication => 'Authentifikation';
 	@override String get authenticationRequiredToContinue => 'Bitte authentifiziere dich, um fortzufahren';
 	@override String get dateAndTime => 'Zeit';
