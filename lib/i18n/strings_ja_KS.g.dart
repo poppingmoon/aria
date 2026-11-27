@@ -477,6 +477,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get editList => 'リストいじる';
 	@override String get selectChannel => 'チャンネルを選ぶ';
 	@override String get selectAntenna => 'アンテナを選ぶ';
+	@override String get selectClip => 'クリップを選択';
 	@override String get editAntenna => 'アンテナいじる';
 	@override String get createAntenna => 'アンテナを作る';
 	@override String get selectWidget => 'ウィジェットを選ぶ';
@@ -673,6 +674,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => '今度のフォルダ名は何にするん？';
 	@override String get circularReferenceFolder => '移動先のフォルダーは、移動するフォルダーのサブフォルダーや。';
 	@override String get hasChildFilesOrFolders => 'このフォルダは空っぽちゃうから消されへん';
+	@override String get uploadFolderDeletionConfirm => 'このフォルダは既定アップロード先に指定されています。削除すると、既定アップロード先は解除され、ファイルはルートにアップロードされます。';
 	@override String get copyUrl => 'URLをコピー';
 	@override String get rename => '名前を変えるで';
 	@override String get avatar => 'アイコン';
@@ -1331,6 +1333,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => 'ドライブがもうパンパンやからアップロードできへんわ。';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'ファイルが思うたよりも大きいさかいアップロードできへんでこれ。';
 	@override String get cannotUploadBecauseUnallowedFileType => '許可されてへんファイル種別やからアップロードできへんっぽい。';
+	@override String get cannotUploadBecauseNoSuchFolder => 'アップロード先のフォルダが見つかりません。既定アップロード先の設定を確認してください。';
 	@override String get beta => 'ベータ';
 	@override String get enableAutoSensitive => '自動できわどいか判断する';
 	@override String get enableAutoSensitiveDescription => '使える時は、機械学習を使って自動でメディアにNSFWフラグを設定するで。この機能をオフにしても、サーバーによっては自動で設定されることがあるで。';
@@ -1615,6 +1618,8 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => '動画・音声の再生にブラウザのUIを使用する';
 	@override String get keepOriginalFilename => 'オリジナルのファイル名を保持';
 	@override String get keepOriginalFilenameDescription => 'この設定をオフにすると、アップロード時にファイル名が自動でランダム文字列に置き換えられるで。';
+	@override String get cannotSelectSensitiveMedia => 'センシティブなメディアは選択できません';
+	@override String get cannotSelectSensitiveMediaDescription => '自分でセンシティブ設定を行っていないのにこのエラーが出ている場合、自動判定によりセンシティブなメディアとされている可能性があります。\nサーバーの規則に照らして不要な場合は、ファイルのセンシティブ設定を解除してもう一度お試しください。';
 	@override String get noDescription => '説明文はあらへんで';
 	@override String get alwaysConfirmFollow => 'フォローの際常に確認する';
 	@override String get inquiry => '問い合わせ';
@@ -1748,6 +1753,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override late final Translations$misskey$settings_$ja_KS settings_ = Translations$misskey$settings_$ja_KS.internal(_root);
 	@override late final Translations$misskey$preferencesProfile_$ja_KS preferencesProfile_ = Translations$misskey$preferencesProfile_$ja_KS.internal(_root);
 	@override late final Translations$misskey$preferencesBackup_$ja_KS preferencesBackup_ = Translations$misskey$preferencesBackup_$ja_KS.internal(_root);
+	@override late final Translations$misskey$followApproval_$ja_KS followApproval_ = Translations$misskey$followApproval_$ja_KS.internal(_root);
 	@override late final Translations$misskey$accountSettings_$ja_KS accountSettings_ = Translations$misskey$accountSettings_$ja_KS.internal(_root);
 	@override late final Translations$misskey$abuseUserReport_$ja_KS abuseUserReport_ = Translations$misskey$abuseUserReport_$ja_KS.internal(_root);
 	@override late final Translations$misskey$delivery_$ja_KS delivery_ = Translations$misskey$delivery_$ja_KS.internal(_root);
@@ -2030,6 +2036,8 @@ class Translations$misskey$settings_$ja_KS extends Translations$misskey$settings
 	@override String get settingsPersistence_title => '設定の永続化';
 	@override String get settingsPersistence_description1 => '設定の永続化を有効にすると、設定情報が失われるのを防止できます。';
 	@override String get settingsPersistence_description2 => '環境によっては有効化できない場合があります。';
+	@override String get autoplayEmbededPlayerOfUrlPreview => 'URLプレビューの埋め込みプレイヤーを自動再生';
+	@override String get expandUrlPreviewAutomatically => 'URLプレビューを自動展開';
 	@override late final Translations$misskey$settings_$chat_$ja_KS chat_ = Translations$misskey$settings_$chat_$ja_KS.internal(_root);
 }
 
@@ -2064,6 +2072,29 @@ class Translations$misskey$preferencesBackup_$ja_KS extends Translations$misskey
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'このデバイスで設定の自動バックアップは有効になってへんで。';
 	@override String get backupFound => '設定のバックアップがあるみたいやわ';
 	@override String get forceBackup => '設定の強制バックアップ';
+}
+
+// Path: misskey.followApproval_
+class Translations$misskey$followApproval_$ja_KS extends Translations$misskey$followApproval_$en_US {
+	Translations$misskey$followApproval_$ja_KS.internal(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => 'フォロー承認';
+	@override String get inactiveDescription => 'すべてのフォローが承認制になるため、期間による設定は適用されません。フォローの承認制を解除すると、以下の設定が再び適用されます。';
+	@override String get title => '新しいアカウントからのフォローを承認制にする';
+	@override String get autoAcceptDescription => 'フォローを承認制にしている場合や、新しいアカウントからのフォローを保留する場合にも、あなたがフォローしている相手は自動承認します。';
+	@override String get description => '指定した期間が経過していない相手からのフォローを、フォローリクエストとして保留します。既存のフォロワーには影響しません。フォローしている相手の自動承認が有効な場合、その相手は自動承認されます。';
+	@override String get local => 'ローカルユーザーからのフォロー';
+	@override String get localDescription => 'このサーバーでのアカウント作成からの期間で判定します。';
+	@override String get remote => 'リモートユーザーからのフォロー';
+	@override String get remoteDescription => '相手のサーバーでの作成日時ではなく、このサーバーが初めてそのアカウントを認識してからの期間で判定します。';
+	@override String get useDefault => '既定値を使う（現在は無効）';
+	@override String get custom => '期間を指定する';
+	@override String get period => '承認が必要な期間';
+	@override String get unit => '単位';
+	@override String get invalidPeriod => '期間が正しくありません。1秒以上の期間を、指定できる範囲内で入力してください。';
 }
 
 // Path: misskey.accountSettings_
@@ -2139,6 +2170,9 @@ class Translations$misskey$announcement_$ja_KS extends Translations$misskey$anno
 	@override String get forExistingUsersDescription => 'オンにしたらこのお知らせができた時点でおる人らにだけお知らせが行くで。切ったらこの知らせが行ったあとにアカウント作った人にもちゃんとお知らせが行くで。';
 	@override String get needConfirmationToRead => '既読にするんやったら確認してや';
 	@override String get needConfirmationToReadDescription => 'オンにしたら、このお知らせを既読にする時に確認するで。ついでに、一括既読しても既読扱いにならへんで。';
+	@override String get autoArchiveAt => '自動アーカイブ日時';
+	@override String get autoArchiveAtDescription => '指定した日時を過ぎると、このお知らせは自動的にアーカイブされます。空欄の場合は自動的にアーカイブされません。';
+	@override String get autoArchiveAtMustBeInFuture => '自動アーカイブ日時には現在より後の日時を指定してください。';
 	@override String get end => 'お知らせやめる';
 	@override String get tooManyActiveAnnouncementDescription => 'お知らせが多すぎてUXが落ちそうや。終わったお知らせはアーカイブに突っ込んだほうがええかも。';
 	@override String get readConfirmTitle => '既読にしてええんやな?';

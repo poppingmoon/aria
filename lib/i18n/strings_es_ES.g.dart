@@ -431,6 +431,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get editList => 'Editar lista';
 	@override String get selectChannel => 'Seleccionar canal';
 	@override String get selectAntenna => 'Seleccionar antena';
+	@override String get selectClip => 'Seleccionar clip';
 	@override String get editAntenna => 'Editar antena';
 	@override String get createAntenna => 'Crear una antena';
 	@override String get selectWidget => 'Seleccionar widget';
@@ -627,6 +628,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => 'Ingrese un nuevo nombre de la carpeta';
 	@override String get circularReferenceFolder => 'La carpeta de destino es una sub-carpeta de la carpeta que quieres mover.';
 	@override String get hasChildFilesOrFolders => 'No se puede borrar esta carpeta. No está vacía.';
+	@override String get uploadFolderDeletionConfirm => 'Esta carpeta está designada como destino predeterminado para las subidas. Si la eliminas, dejará de ser el destino predeterminado y los archivos se subirán a la raíz.';
 	@override String get copyUrl => 'Copiar URL';
 	@override String get rename => 'Renombrar';
 	@override String get avatar => 'Avatar';
@@ -1285,6 +1287,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => 'La subida falló debido a falta de espacio libre en la unidad del usuario.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Este archivo supera el peso máximo y no puede ser subido.';
 	@override String get cannotUploadBecauseUnallowedFileType => 'Incapaz de subir el archivo debido a que es un tipo de archivo no autorizado.';
+	@override String get cannotUploadBecauseNoSuchFolder => 'No se encuentra la carpeta de destino de la subida. Comprueba la configuración predeterminada de la carpeta de destino de la subida.';
 	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Marcar automáticamente contenido NSFW';
 	@override String get enableAutoSensitiveDescription => 'Permite la detección y marcado automático de contenido NSFW usando \'Machine Learning\' cuando sea posible. Incluso si esta opción está desactivada, puede ser activado para toda la instancia.';
@@ -1569,6 +1572,8 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => 'Usar la interfaz del navegador cuando se reproduce audio y vídeo';
 	@override String get keepOriginalFilename => 'Mantener el nombre original del archivo';
 	@override String get keepOriginalFilenameDescription => 'Si desactivas esta opción, los nombres de los archivos serán remplazados por una cadena de caracteres aleatoria cuando subas los archivos.';
+	@override String get cannotSelectSensitiveMedia => 'No se puede seleccionar contenido sensible';
+	@override String get cannotSelectSensitiveMediaDescription => 'Si te aparece este error sin haber marcado el contenido como sensible, es posible que el archivo se haya clasificado como tal de manera automática.\nSi no va en contra de las normas del servidor,  quita la marca de contenido sensible del archivo e inténtalo de nuevo.';
 	@override String get noDescription => 'No hay descripción';
 	@override String get alwaysConfirmFollow => 'Confirmar siempre cuando se sigue a alguien';
 	@override String get inquiry => 'Contacto';
@@ -1702,6 +1707,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$settings_$es_ES settings_ = _Translations$misskey$settings_$es_ES._(_root);
 	@override late final _Translations$misskey$preferencesProfile_$es_ES preferencesProfile_ = _Translations$misskey$preferencesProfile_$es_ES._(_root);
 	@override late final _Translations$misskey$preferencesBackup_$es_ES preferencesBackup_ = _Translations$misskey$preferencesBackup_$es_ES._(_root);
+	@override late final _Translations$misskey$followApproval_$es_ES followApproval_ = _Translations$misskey$followApproval_$es_ES._(_root);
 	@override late final _Translations$misskey$accountSettings_$es_ES accountSettings_ = _Translations$misskey$accountSettings_$es_ES._(_root);
 	@override late final _Translations$misskey$abuseUserReport_$es_ES abuseUserReport_ = _Translations$misskey$abuseUserReport_$es_ES._(_root);
 	@override late final _Translations$misskey$delivery_$es_ES delivery_ = _Translations$misskey$delivery_$es_ES._(_root);
@@ -1974,6 +1980,8 @@ class _Translations$misskey$settings_$es_ES extends Translations$misskey$setting
 	@override String get settingsPersistence_title => 'Persistencia de la configuración';
 	@override String get settingsPersistence_description1 => 'Habilitar la persistencia de la configuración evita que se pierda la información de configuración.';
 	@override String get settingsPersistence_description2 => 'Es posible que no se pueda habilitar esta función dependiendo del entorno.';
+	@override String get autoplayEmbededPlayerOfUrlPreview => 'Reproducir automáticamente los reproductores incrustados en las vistas previas de las URL';
+	@override String get expandUrlPreviewAutomatically => 'Expandir automáticamente la vista previa de la URL';
 	@override late final _Translations$misskey$settings_$chat_$es_ES chat_ = _Translations$misskey$settings_$chat_$es_ES._(_root);
 }
 
@@ -2008,6 +2016,29 @@ class _Translations$misskey$preferencesBackup_$es_ES extends Translations$misske
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'La copia de seguridad automática de los ajustes no está activada en este dispositivo.';
 	@override String get backupFound => 'Copia de seguridad de los ajustes encontrada ';
 	@override String get forceBackup => 'Forzar una copia de seguridad de la configuración';
+}
+
+// Path: misskey.followApproval_
+class _Translations$misskey$followApproval_$es_ES extends Translations$misskey$followApproval_$en_US {
+	_Translations$misskey$followApproval_$es_ES._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => 'Aceptar seguimiento';
+	@override String get inactiveDescription => 'Dado que todas las solicitudes de seguimiento pasarán a requerir aprobación, no se aplicarán los ajustes relacionados con el periodo. Si desactivas el sistema de aprobación de solicitudes de seguimiento, se volverán a aplicar los siguientes ajustes.';
+	@override String get title => 'Habilitar la aprobación de seguidores de cuentas nuevas';
+	@override String get autoAcceptDescription => 'Aunque tengas configurada la opción de aprobación de seguidores o hayas puesto en espera las solicitudes de seguimiento de cuentas nuevas, se aprobarán automáticamente las personas a las que tú sigues.';
+	@override String get description => 'Las solicitudes de seguimiento de usuarios que no hayan transcurrido el periodo especificado se pondrán en espera. Esto no afecta a los seguidores actuales. Si tienes activada la aceptación automática de los usuarios a los que sigues, se aceptarán automáticamente.';
+	@override String get local => 'Sigue a usuarios locales';
+	@override String get localDescription => 'Se determinará en función del tiempo transcurrido desde la creación de la cuenta en este servidor.';
+	@override String get remote => 'Seguimiento por parte de usuarios remotos';
+	@override String get remoteDescription => 'No se tiene en cuenta la fecha y hora de creación en el servidor del destinatario, sino el tiempo transcurrido desde que este servidor reconoció por primera vez dicha cuenta.';
+	@override String get useDefault => 'Utilizar valores predeterminados (actualmente desactivado)';
+	@override String get custom => 'Específica un periodo';
+	@override String get period => 'Plazo para la aprobación';
+	@override String get unit => 'Unidad';
+	@override String get invalidPeriod => 'El intervalo de tiempo no es correcto. Introduzca un intervalo de al menos 1 segundo, dentro del rango permitido.';
 }
 
 // Path: misskey.accountSettings_
@@ -2083,6 +2114,9 @@ class _Translations$misskey$announcement_$es_ES extends Translations$misskey$ann
 	@override String get forExistingUsersDescription => 'Este anuncio solo se mostrará a aquellos usuarios registrados en el momento de su publicación. Si se deshabilita esta opción, aquellos usuarios que se registren tras su publicación también lo verán.';
 	@override String get needConfirmationToRead => 'Requerir confirmación de lectura aparte';
 	@override String get needConfirmationToReadDescription => 'Si se habilita esta opción, se pedirá una confirmación de lectura aparte. Además, este anuncio será excluido de cualquier funcionalidad de "Marcar todos como leídos".';
+	@override String get autoArchiveAt => 'Fecha y hora del archivo automático';
+	@override String get autoArchiveAtDescription => 'Una vez pasada la fecha y la hora indicadas, este aviso se archivará automáticamente. Si se deja en blanco, no se archivará automáticamente.';
+	@override String get autoArchiveAtMustBeInFuture => 'Especifica una fecha y hora para el archivo automático posteriores a la actual.';
 	@override String get end => 'Anuncios archivados';
 	@override String get tooManyActiveAnnouncementDescription => 'Tener demasiados anuncios activos empeora la experiencia de usuario. Por favor, considera archivar aquellos anuncios que hayan quedado obsoletos.';
 	@override String get readConfirmTitle => '¿Marcar como leído?';

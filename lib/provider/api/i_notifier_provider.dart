@@ -12,6 +12,11 @@ import 'misskey_provider.dart';
 part 'i_notifier_provider.g.dart';
 
 @riverpod
+FutureOr<Map<String, dynamic>> _i(Ref ref, Account account) {
+  return ref.watch(misskeyProvider(account)).apiService.post('i', {});
+}
+
+@riverpod
 @JsonPersist()
 class INotifier extends _$INotifier {
   @override
@@ -31,10 +36,12 @@ class INotifier extends _$INotifier {
       }
     });
     final persistResult = persist(ref.watch(riverpodStorageProvider.future));
+    // ignore: experimental_member_use
+    ref.onManualInvalidation(() => ref.invalidate(_iProvider(account)));
     try {
-      final i = await _misskey.i.i();
+      final i = await ref.watch(_iProvider(account).future);
       await persistResult.future;
-      return i;
+      return MeDetailed.fromJson(i);
     } catch (_) {
       link.close();
       await persistResult.future;
@@ -157,6 +164,42 @@ class INotifier extends _$INotifier {
       IUpdateRequest(autoAcceptFollowed: autoAcceptFollowed),
     );
     state = AsyncValue.data(i);
+  }
+
+  Future<void> setFollowApprovalLocalSeconds(
+    int? followApprovalLocalSeconds,
+  ) async {
+    if (followApprovalLocalSeconds != null) {
+      final i = await _misskey.i.update(
+        IUpdateRequest(followApprovalLocalSeconds: followApprovalLocalSeconds),
+      );
+      state = AsyncValue.data(i);
+    } else {
+      final response = await _misskey.apiService.post<Map<String, dynamic>>(
+        'i/update',
+        {'followApprovalLocalSeconds': null},
+      );
+      state = AsyncValue.data(MeDetailed.fromJson(response));
+    }
+  }
+
+  Future<void> setFollowApprovalRemoteSeconds(
+    int? followApprovalRemoteSeconds,
+  ) async {
+    if (followApprovalRemoteSeconds != null) {
+      final i = await _misskey.i.update(
+        IUpdateRequest(
+          followApprovalRemoteSeconds: followApprovalRemoteSeconds,
+        ),
+      );
+      state = AsyncValue.data(i);
+    } else {
+      final response = await _misskey.apiService.post<Map<String, dynamic>>(
+        'i/update',
+        {'followApprovalRemoteSeconds': null},
+      );
+      state = AsyncValue.data(MeDetailed.fromJson(response));
+    }
   }
 
   Future<void> setPublicReactions(bool publicReactions) async {
@@ -372,4 +415,9 @@ class INotifier extends _$INotifier {
       state = AsyncValue.data(updated);
     }
   }
+}
+
+@riverpod
+FutureOr<Set<String>> iProperties(Ref ref, Account account) {
+  return ref.watch(_iProvider(account).selectAsync((i) => i.keys.toSet()));
 }

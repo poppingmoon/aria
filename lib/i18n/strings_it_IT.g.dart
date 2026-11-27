@@ -455,6 +455,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get editList => 'Modifica Lista';
 	@override String get selectChannel => 'Seleziona canale';
 	@override String get selectAntenna => 'Scegli un\'antenna';
+	@override String get selectClip => 'Seleziona Clip';
 	@override String get editAntenna => 'Modifica Antenna';
 	@override String get createAntenna => 'Crea Antenna';
 	@override String get selectWidget => 'Seleziona il riquadro';
@@ -651,6 +652,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => 'Inserisci nome della nuova cartella';
 	@override String get circularReferenceFolder => 'La cartella di destinazione è una sottocartella della cartella che vuoi spostare.';
 	@override String get hasChildFilesOrFolders => 'Impossibile eliminare la cartella perché non è vuota';
+	@override String get uploadFolderDeletionConfirm => 'Questa cartella è scelta come destinazione predefinita per i caricamenti. Eliminandola, la destinazione predefinita scompare e i file vengono caricati alla radice.';
 	@override String get copyUrl => 'Copia URL';
 	@override String get rename => 'Modifica nome';
 	@override String get avatar => 'Foto del profilo';
@@ -765,7 +767,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get securityKey => 'Chiave di sicurezza';
 	@override String get lastUsed => 'Ultima attività';
 	@override String lastUsedAt({required Object t}) => 'Uso più recente: ${t}';
-	@override String get unregister => 'Rimuovi autenticazione a due fattori (2FA/MFA)';
+	@override String get unregister => 'Cancella registrazione';
 	@override String get passwordLessLogin => 'Accedi senza password';
 	@override String get passwordLessLoginDescription => 'Accedi senza password, usando la chiave di sicurezza';
 	@override String get resetPassword => 'Ripristina la password';
@@ -913,8 +915,8 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilitare AiScript nelle pagine';
 	@override String get updateRemoteUser => 'Aggiorna dati dal profilo remoto';
-	@override String get unsetMfa => 'Rimuovere l\'autenticazione a due fattori (2FA/MFA)';
-	@override String get unsetMfaConfirm => 'Vuoi davvero rimuovere l\'autenticazione a due fattori?';
+	@override String get unsetMfa => 'Disattivare 2FA/MFA';
+	@override String get unsetMfaConfirm => 'Vuoi davvero disattivare l\'autenticazione a due fattori?';
 	@override String get unsetUserAvatar => 'Rimozione foto profilo';
 	@override String get unsetUserAvatarConfirm => 'Vuoi davvero rimuovere la foto profilo?';
 	@override String get unsetUserBanner => 'Rimuovi intestazione profilo';
@@ -1309,6 +1311,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => 'Impossibile caricare a causa della mancanza di spazio libero sul drive.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Il file non può essere caricato perché eccede le dimensioni consentite.';
 	@override String get cannotUploadBecauseUnallowedFileType => 'Impossibile caricare a causa di un tipo file non autorizzato.';
+	@override String get cannotUploadBecauseNoSuchFolder => 'Impossibile trovare la cartella predefinita per i caricamenti. Controllare le impostazioni.';
 	@override String get beta => 'Versione beta';
 	@override String get enableAutoSensitive => 'Determinazione automatica del NSFW';
 	@override String get enableAutoSensitiveDescription => 'Se disponibile, il flag NSFW viene impostato automaticamente sui media utilizzando l\'apprendimento automatico. Anche se questa funzione è disattivata, in alcuni casi può essere impostata automaticamente.';
@@ -1459,7 +1462,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get youFollowing => 'Following';
 	@override String get preventAiLearning => 'Impedisci l\'apprendimento della IA';
 	@override String get preventAiLearningDescription => 'Aggiungendo il campo "noai" alla risposta HTML, si indica ai Robot esterni di non usare testi e allegati per addestrare sistemi di Machine Learning (IA predittiva/generativa). Anche se è impossibile sapere se la richiesta venga onorata o semplicemente ignorata.';
-	@override String get options => 'Opzioni del ruolo';
+	@override String get options => 'Opzioni';
 	@override String get specifyUser => 'Profilo specifico';
 	@override String get lookupConfirm => 'Vuoi davvero richiedere informazioni?';
 	@override String get openTagPageConfirm => 'Vuoi davvero aprire la pagina dell\'hashtag?';
@@ -1593,6 +1596,8 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => 'Riprodurre audio/video usando le funzionalità del browser';
 	@override String get keepOriginalFilename => 'Mantieni il nome file originale';
 	@override String get keepOriginalFilenameDescription => 'Disattivandola, i file verranno caricati usando nomi casuali.';
+	@override String get cannotSelectSensitiveMedia => 'Impossibile selezionare il media esplicito';
+	@override String get cannotSelectSensitiveMediaDescription => 'Se si ottiene questo errore senza aver contrassegnato il contenuto come sensibile, il file potrebbe essere stato automaticamente classificato come tale.\nConsiderando il regolamento del server, valutare se rimuovere l\'attributo "contenuto esplicito" e riprovare.';
 	@override String get noDescription => 'Manca la descrizione';
 	@override String get alwaysConfirmFollow => 'Richiedi conferma per i Follow';
 	@override String get inquiry => 'Contattaci';
@@ -1696,7 +1701,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String scheduleToPostOnX({required Object x}) => 'Pianificare la pubblicazione ${x}';
 	@override String scheduledToPostOnX({required Object x}) => 'Pubblicazione pianificata ${x}';
 	@override String get schedule => 'Pianificare';
-	@override String get scheduled => 'Pianificata';
+	@override String get scheduled => 'Pianificate';
 	@override String get widgets => 'Riquadri';
 	@override String get deviceInfo => 'Informazioni sul dispositivo';
 	@override String get deviceInfoDescription => 'Se ci contatti per ricevere supporto tecnico, ti preghiamo di includere le seguenti informazioni per aiutarci a risolvere il tuo problema.';
@@ -1726,6 +1731,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$settings_$it_IT settings_ = _Translations$misskey$settings_$it_IT._(_root);
 	@override late final _Translations$misskey$preferencesProfile_$it_IT preferencesProfile_ = _Translations$misskey$preferencesProfile_$it_IT._(_root);
 	@override late final _Translations$misskey$preferencesBackup_$it_IT preferencesBackup_ = _Translations$misskey$preferencesBackup_$it_IT._(_root);
+	@override late final _Translations$misskey$followApproval_$it_IT followApproval_ = _Translations$misskey$followApproval_$it_IT._(_root);
 	@override late final _Translations$misskey$accountSettings_$it_IT accountSettings_ = _Translations$misskey$accountSettings_$it_IT._(_root);
 	@override late final _Translations$misskey$abuseUserReport_$it_IT abuseUserReport_ = _Translations$misskey$abuseUserReport_$it_IT._(_root);
 	@override late final _Translations$misskey$delivery_$it_IT delivery_ = _Translations$misskey$delivery_$it_IT._(_root);
@@ -1998,6 +2004,8 @@ class _Translations$misskey$settings_$it_IT extends Translations$misskey$setting
 	@override String get settingsPersistence_title => 'Configurazione persistente';
 	@override String get settingsPersistence_description1 => 'Attivando le impostazioni persistenti si può evitare di riconfigurare il client successivamente.';
 	@override String get settingsPersistence_description2 => 'Potrebbe non essere possibile attivare, dipende dall\'ambiente.';
+	@override String get autoplayEmbededPlayerOfUrlPreview => 'Riproduci automaticamente le anteprime URL multimediali';
+	@override String get expandUrlPreviewAutomatically => 'Espansione automatica delle anteprime URL';
 	@override late final _Translations$misskey$settings_$chat_$it_IT chat_ = _Translations$misskey$settings_$chat_$it_IT._(_root);
 }
 
@@ -2032,6 +2040,29 @@ class _Translations$misskey$preferencesBackup_$it_IT extends Translations$misske
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Su questo dispositivo non è stato attivato il backup automatico delle preferenze.';
 	@override String get backupFound => 'Esiste il Backup delle preferenze';
 	@override String get forceBackup => 'Backup forzato delle impostazioni';
+}
+
+// Path: misskey.followApproval_
+class _Translations$misskey$followApproval_$it_IT extends Translations$misskey$followApproval_$en_US {
+	_Translations$misskey$followApproval_$it_IT._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => 'Approvazione dei Follow';
+	@override String get inactiveDescription => 'Poiché i Follow sono soggetti ad approvazione, non si applicano le impostazioni basate sul periodo. Disattivando il sistema di approvazione, verranno nuovamente applicate le seguenti impostazioni.';
+	@override String get title => 'Le richieste di follow da parte di nuovi account richiedono l\'approvazione.';
+	@override String get autoAcceptDescription => 'Anche se attivi "Richiedi approvazione per le richieste di follow" o "Richiedi approvazione per le richieste di follow da nuovi account", le richieste di follow provenienti da account che già segui verranno approvate automaticamente.';
+	@override String get description => 'Le richieste di follow da profili registrati prima del tempo specificato verranno non verranno approvate. Questo non influisce sui Follower esistenti; se è attiva l\'opzione “Accetta automaticamente le richieste di follow da chi mi segue”, le richieste di follow da quei profili verranno approvate automaticamente.';
+	@override String get local => 'Richieste da profili locali';
+	@override String get localDescription => 'Si calcola la durata relativamente alla data di iscrizione del profilo in questo server.';
+	@override String get remote => 'Richieste da profili remoti';
+	@override String get remoteDescription => 'Si calcola la durata in base a quando il profilo remoto è stato federato su questo server la prima volta; non si calcola la data di iscrizione sul server remoto.';
+	@override String get useDefault => 'Utilizzare il valore predefinito (attualmente disabilitato)';
+	@override String get custom => 'Periodo specifico';
+	@override String get period => 'Periodo richiesto per l\'iscrizione';
+	@override String get unit => 'Unità';
+	@override String get invalidPeriod => 'Periodo sbagliato. Indicare da 1 secondo fino al limite consentito.';
 }
 
 // Path: misskey.accountSettings_
@@ -2107,6 +2138,9 @@ class _Translations$misskey$announcement_$it_IT extends Translations$misskey$ann
 	@override String get forExistingUsersDescription => 'L\'annuncio sarà visibile solo ai profili esistenti in questo momento. Se disabilitato, sarà visibile anche ai profili che verranno creati dopo la pubblicazione di questo annuncio.';
 	@override String get needConfirmationToRead => 'Conferma di lettura obbligatoria';
 	@override String get needConfirmationToReadDescription => 'I profili riceveranno una finestra di dialogo che richiede di accettare obbligatoriamente per procedere. Tale richiesta è esente da  "conferma tutte".';
+	@override String get autoArchiveAt => 'Data e ora di archiviazione automatica';
+	@override String get autoArchiveAtDescription => 'Dal momento specificato, la notifica verrà archiviata automaticamente. Se è vuoto, non verrà archiviata automaticamente.';
+	@override String get autoArchiveAtMustBeInFuture => 'Specificare data e ora futura.';
 	@override String get end => 'Archivia l\'annuncio';
 	@override String get tooManyActiveAnnouncementDescription => 'L\'esperienza delle persone può peggiorare se ci sono troppi annunci attivi. Considera anche l\'archiviazione degli annunci conclusi.';
 	@override String get readConfirmTitle => 'Segnare come già letto?';
@@ -2765,8 +2799,8 @@ class _Translations$misskey$x2fa_$it_IT extends Translations$misskey$x2fa_$en_US
 	@override String get checkBackupCodesBeforeCloseThisWizard => 'Prima di chiudere questa procedura guidata, salva i tuoi codici usa-e-getta in un posto sicuro.';
 	@override String get backupCodes => 'Codici usa-e-getta';
 	@override String get backupCodesDescription => 'Puoi usare questi codici usa-e-getta per ottenere l\'accesso al tuo profilo in caso sia impossibile usare l\'App col codice OTP. Salvali in un posto sicuro.';
-	@override String get backupCodeUsedWarning => 'È stato usato un codice usa-e-getta. Per favore, riconfigura l\'autenticazione a due fattori il prima possibile, nel caso la configurazione precedente abbia smesso di funzionare.';
-	@override String get backupCodesExhaustedWarning => 'Hai esaurito i codici usa-e-getta. Se l\'App che genera il codice OTP non è più disponibile, non potrai più accedere al tuo profilo. Ripeti la configurazione per l\'autenticazione a due fattori.';
+	@override String get backupCodeUsedWarning => 'È stato usato un codice usa e getta. Per favore, riconfigura l\'autenticazione a due fattori il prima possibile, se la configurazione precedente ha smesso di funzionare.';
+	@override String get backupCodesExhaustedWarning => 'Hai esaurito i codici usa e getta. Se l\'App che genera il codice OTP non è più disponibile, non potrai più accedere al tuo profilo. Ripeti la configurazione per l\'autenticazione a due fattori.';
 	@override String get moreDetailedGuideHere => 'Informazioni dettagliate sull\'autenticazione multi fattore (2FA/MFA)';
 }
 
@@ -2827,7 +2861,7 @@ class _Translations$misskey$permissions_$it_IT extends Translations$misskey$perm
 	@override String get readAdminShowModerationLog => 'Vedere lo storico di moderazione';
 	@override String get readAdminShowUser => 'Vedere le informazioni private dei profili';
 	@override String get writeAdminSuspendUser => 'Sospendere i profili';
-	@override String get writeAdminUnsetMfa => 'Può rimuovere l\'autenticazione a due fattori (2FA/MFA)';
+	@override String get writeAdminUnsetMfa => 'Può disattivare 2FA/MFA';
 	@override String get writeAdminUnsetUserAvatar => 'Rimuovere la foto profilo dai profili';
 	@override String get writeAdminUnsetUserBanner => 'Rimuovere l\'immagine testata dai profili';
 	@override String get writeAdminUnsuspendUser => 'Rimuovere la sospensione ai profili';
@@ -3418,7 +3452,7 @@ class _Translations$misskey$moderationLogTypes_$it_IT extends Translations$missk
 	@override String get createAvatarDecoration => 'Crea una decorazione della foto profilo';
 	@override String get updateAvatarDecoration => 'Modifica una decorazione della foto profilo';
 	@override String get deleteAvatarDecoration => 'Elimina una decorazione della foto profilo';
-	@override String get unsetMfa => 'Rimossa l\'autenticazione a due fattori (2FA7MFA)';
+	@override String get unsetMfa => 'L\'autenticazione a due fattori (2FA7MFA) è stata disattivata';
 	@override String get unsetUserAvatar => 'Toglie una foto profilo';
 	@override String get unsetUserBanner => 'Toglie una immagine di intestazione profilo';
 	@override String get createSystemWebhook => 'Aggiunge un System Webhook';

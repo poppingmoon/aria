@@ -405,6 +405,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get editList => '리스트 편집';
 	@override String get selectChannel => '채널 선택';
 	@override String get selectAntenna => '안테나 선택';
+	@override String get selectClip => '클립 선택';
 	@override String get editAntenna => '안테나 편집';
 	@override String get createAntenna => '안테나 만들기';
 	@override String get selectWidget => '위젯 선택';
@@ -601,6 +602,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get inputNewFolderName => '바꿀 폴더명을 입력해 주세요';
 	@override String get circularReferenceFolder => '지정한 폴더가 이동할 폴더의 하위 폴더입니다.';
 	@override String get hasChildFilesOrFolders => '이 폴더는 비어있지 않기 때문에 삭제할 수 없습니다.';
+	@override String get uploadFolderDeletionConfirm => '이 폴더는 기본 업로드 위치로 지정되어 있습니다. 삭제하면 기본 업로드 위치 지정이 해제되고, 이후 파일은 루트 폴더에 업로드됩니다.';
 	@override String get copyUrl => 'URL 복사';
 	@override String get rename => '이름 변경';
 	@override String get avatar => '아바타';
@@ -1259,6 +1261,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseNoFreeSpace => '드라이브 용량이 부족하여 업로드할 수 없습니다.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => '파일 크기가 너무 크기 때문에 업로드할 수 없습니다.';
 	@override String get cannotUploadBecauseUnallowedFileType => '허가되지 않은 유형의 파일이기에 업로드할 수 없습니다.';
+	@override String get cannotUploadBecauseNoSuchFolder => '업로드할 폴더를 찾을 수 없습니다. 기본 업로드 위치 설정을 확인해 주세요.';
 	@override String get beta => '베타';
 	@override String get enableAutoSensitive => '자동 NSFW 탐지';
 	@override String get enableAutoSensitiveDescription => '이용 가능할 경우 기계학습을 통해 자동으로 미디어 NSFW를 설정합니다. 이 기능을 해제하더라도, 서버 정책에 따라 자동으로 설정될 수 있습니다.';
@@ -1543,6 +1546,8 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get useNativeUIForVideoAudioPlayer => '브라우저 UI에서 미디어 재생';
 	@override String get keepOriginalFilename => '원본 파일 이름을 유지';
 	@override String get keepOriginalFilenameDescription => '이 설정을 끄면 업로드를 할 때 파일 이름이 자동으로 무작위 문자열로 바뀝니다.';
+	@override String get cannotSelectSensitiveMedia => '민감한 미디어는 선택할 수 없습니다.';
+	@override String get cannotSelectSensitiveMediaDescription => '자신이 민감함 설정을 하고 있지 않음에도 이 에러가 나온 경우, 자동 판정에 의해 민감한 미디어로 간주됐을 수 있습니다.\n서버의 규칙과 대조했을 때 불필요한 경우에는 파일의 민감함 설정을 해제하고 한 번 더 시도해 주십시오.';
 	@override String get noDescription => '설명문이 없습니다';
 	@override String get alwaysConfirmFollow => '팔로우일 때 항상 확인하기';
 	@override String get inquiry => '문의하기';
@@ -1676,6 +1681,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override late final Translations$misskey$settings_$ko_KR settings_ = Translations$misskey$settings_$ko_KR.internal(_root);
 	@override late final Translations$misskey$preferencesProfile_$ko_KR preferencesProfile_ = Translations$misskey$preferencesProfile_$ko_KR.internal(_root);
 	@override late final Translations$misskey$preferencesBackup_$ko_KR preferencesBackup_ = Translations$misskey$preferencesBackup_$ko_KR.internal(_root);
+	@override late final Translations$misskey$followApproval_$ko_KR followApproval_ = Translations$misskey$followApproval_$ko_KR.internal(_root);
 	@override late final Translations$misskey$accountSettings_$ko_KR accountSettings_ = Translations$misskey$accountSettings_$ko_KR.internal(_root);
 	@override late final Translations$misskey$abuseUserReport_$ko_KR abuseUserReport_ = Translations$misskey$abuseUserReport_$ko_KR.internal(_root);
 	@override late final Translations$misskey$delivery_$ko_KR delivery_ = Translations$misskey$delivery_$ko_KR.internal(_root);
@@ -1958,6 +1964,8 @@ class Translations$misskey$settings_$ko_KR extends Translations$misskey$settings
 	@override String get settingsPersistence_title => '설정 영구화';
 	@override String get settingsPersistence_description1 => '설정 영구화를 활성화하면 설정 정보를 잃어버리는 것을 방지할 수 있습니다.';
 	@override String get settingsPersistence_description2 => '환경에 따라 활성화되지 않을 수 있습니다.';
+	@override String get autoplayEmbededPlayerOfUrlPreview => 'URL 미리보기의 임베드 플레이어 자동 재생';
+	@override String get expandUrlPreviewAutomatically => 'URL 미리보기 자동확장';
 	@override late final Translations$misskey$settings_$chat_$ko_KR chat_ = Translations$misskey$settings_$chat_$ko_KR.internal(_root);
 }
 
@@ -1992,6 +2000,29 @@ class Translations$misskey$preferencesBackup_$ko_KR extends Translations$misskey
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '이 장치에서 설정 자동 백업이 활성화되어 있지 않습니다.';
 	@override String get backupFound => '설정 백업이 발견되었습니다';
 	@override String get forceBackup => '설정 강제 백업';
+}
+
+// Path: misskey.followApproval_
+class Translations$misskey$followApproval_$ko_KR extends Translations$misskey$followApproval_$en_US {
+	Translations$misskey$followApproval_$ko_KR.internal(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get groupTitle => '팔로우 승인';
+	@override String get inactiveDescription => '모든 팔로우가 승인제로 되어 기간에 따른 설정은 적용되지 않습니다. 팔로우의 승인제를 해제하면 아래의 설정이 다시 적용됩니다.';
+	@override String get title => '새로운 계정으로부터의 팔로우를 승인제로 변경';
+	@override String get autoAcceptDescription => '팔로우를 승인제로 한 경우나 새로운 계정으로부터의 팔로우를 보류하는 경우에도 사용자님께서 팔로우하고 있는 상대는 자동 승인됩니다.';
+	@override String get description => '지정한 기간이 경과하지 않은 상대로부터의 팔로우를 팔로우 요청으로 보류합니다. 기존 팔로워에는 영향을 끼치지 않습니다. 팔로우하고 있는 상대의 자동 승인이 활성화된 경우, 그 상대는 자동 승인됩니다.';
+	@override String get local => '로컬 유저로부터의 팔로우';
+	@override String get localDescription => '이 서버에서의 계정 생성으로부터의 기간으로 판정됩니다.';
+	@override String get remote => '리모트 유저로부터의 팔로우';
+	@override String get remoteDescription => '상대 서버에서의 생성 시각이 아닌 이 서버가 처음 그 계정을 인식한 뒤부터의 기간으로 판정됩니다.';
+	@override String get useDefault => '미리 정해둔 값을 사용 (현재는 유효하지 않음)';
+	@override String get custom => '기간 지정';
+	@override String get period => '승인이 필요한 기간';
+	@override String get unit => '단위';
+	@override String get invalidPeriod => '기간이 올바르지 않습니다. 1초 이상의 기간을 지정 가능한 범위 내에 입력해 주십시오.';
 }
 
 // Path: misskey.accountSettings_
@@ -2067,6 +2098,9 @@ class Translations$misskey$announcement_$ko_KR extends Translations$misskey$anno
 	@override String get forExistingUsersDescription => '활성화하면 이 공지사항을 게시한 시점에서 이미 가입한 유저에게만 표시합니다. 비활성화하면 게시 후에 가입한 유저에게도 표시합니다.';
 	@override String get needConfirmationToRead => '읽음으로 표시하기 전에 확인하기';
 	@override String get needConfirmationToReadDescription => '활성화하면 이 공지사항을 읽음으로 표시하기 전에 확인 알림창을 띄웁니다. \'모두 읽음\'의 대상에서도 제외됩니다.';
+	@override String get autoArchiveAt => '자동 아카이브 날짜 및 시각';
+	@override String get autoArchiveAtDescription => '지정한 날짜 및 시각이 지나면 이 알림은 자동적으로 아카이브됩니다. 빈칸일 경우에는 자동적으로 아카이브되지 않습니다.';
+	@override String get autoArchiveAtMustBeInFuture => '자동 아카이브 날짜 및 시각에는 현재보다 후의 날짜 및 시각으로 지정해 주십시오.';
 	@override String get end => '공지에서 내리기';
 	@override String get tooManyActiveAnnouncementDescription => '공지사항이 너무 많을 경우, 유저 경험에 영향을 끼칠 가능성이 있습니다. 오래된 공지사항은 아카이브하시는 것을 권장드립니다.';
 	@override String get readConfirmTitle => '읽음으로 표시합니까?';

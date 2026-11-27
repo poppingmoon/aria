@@ -66,6 +66,7 @@ import '../view/page/settings/behavior_page.dart';
 import '../view/page/settings/blocked_users_page.dart';
 import '../view/page/settings/drive_settings_page.dart';
 import '../view/page/settings/emoji_picker_page.dart';
+import '../view/page/settings/follow_approval_page.dart';
 import '../view/page/settings/import_export_page.dart';
 import '../view/page/settings/languages_page.dart';
 import '../view/page/settings/lockdown_page.dart';
@@ -241,6 +242,14 @@ GoRouter router(Ref ref) {
                       ),
                     ),
                     routes: [
+                      GoRoute(
+                        path: 'follow-approval',
+                        builder: (_, state) => FollowApprovalPage(
+                          account: Account.fromString(
+                            state.pathParameters['acct']!,
+                          ),
+                        ),
+                      ),
                       GoRoute(
                         path: 'lockdown',
                         builder: (_, state) => LockdownPage(

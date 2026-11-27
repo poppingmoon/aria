@@ -1204,6 +1204,9 @@ class Translations$misskey$en_US {
 	/// en-US: 'Select an antenna'
 	String get selectAntenna => 'Select an antenna';
 
+	/// en-US: 'Select a clip'
+	String get selectClip => 'Select a clip';
+
 	/// en-US: 'Edit antenna'
 	String get editAntenna => 'Edit antenna';
 
@@ -1791,6 +1794,9 @@ class Translations$misskey$en_US {
 
 	/// en-US: 'Since this folder is not empty, it can not be deleted.'
 	String get hasChildFilesOrFolders => 'Since this folder is not empty, it can not be deleted.';
+
+	/// en-US: 'This folder is designated as the default upload destination. If you delete it, this designation will be removed, and files will be uploaded to the root directory instead.'
+	String get uploadFolderDeletionConfirm => 'This folder is designated as the default upload destination. If you delete it, this designation will be removed, and files will be uploaded to the root directory instead.';
 
 	/// en-US: 'Copy URL'
 	String get copyUrl => 'Copy URL';
@@ -3766,6 +3772,9 @@ class Translations$misskey$en_US {
 	/// en-US: 'Unable to upload due to unauthorized file type.'
 	String get cannotUploadBecauseUnallowedFileType => 'Unable to upload due to unauthorized file type.';
 
+	/// en-US: 'The upload destination folder cannot be found. Please check the default upload destination settings.'
+	String get cannotUploadBecauseNoSuchFolder => 'The upload destination folder cannot be found. Please check the default upload destination settings.';
+
 	/// en-US: 'Beta'
 	String get beta => 'Beta';
 
@@ -4618,6 +4627,12 @@ class Translations$misskey$en_US {
 	/// en-US: 'If you turn off this setting, files names will be replaced with random string automatically when you upload files.'
 	String get keepOriginalFilenameDescription => 'If you turn off this setting, files names will be replaced with random string automatically when you upload files.';
 
+	/// en-US: 'You can't select sensitive media'
+	String get cannotSelectSensitiveMedia => 'You can\'t select sensitive media';
+
+	/// en-US: 'If you are seeing this error even though you did not manually mark the content as sensitive, it may have been flagged as sensitive by an automated detection. If the content does not violate server rules, please remove the sensitive flag from the file and try again.'
+	String get cannotSelectSensitiveMediaDescription => 'If you are seeing this error even though you did not manually mark the content as sensitive, it may have been flagged as sensitive by an automated detection.\nIf the content does not violate server rules, please remove the sensitive flag from the file and try again.';
+
 	/// en-US: 'There is no explanation'
 	String get noDescription => 'There is no explanation';
 
@@ -4999,6 +5014,7 @@ class Translations$misskey$en_US {
 	late final Translations$misskey$settings_$en_US settings_ = Translations$misskey$settings_$en_US.internal(_root);
 	late final Translations$misskey$preferencesProfile_$en_US preferencesProfile_ = Translations$misskey$preferencesProfile_$en_US.internal(_root);
 	late final Translations$misskey$preferencesBackup_$en_US preferencesBackup_ = Translations$misskey$preferencesBackup_$en_US.internal(_root);
+	late final Translations$misskey$followApproval_$en_US followApproval_ = Translations$misskey$followApproval_$en_US.internal(_root);
 	late final Translations$misskey$accountSettings_$en_US accountSettings_ = Translations$misskey$accountSettings_$en_US.internal(_root);
 	late final Translations$misskey$abuseUserReport_$en_US abuseUserReport_ = Translations$misskey$abuseUserReport_$en_US.internal(_root);
 	late final Translations$misskey$delivery_$en_US delivery_ = Translations$misskey$delivery_$en_US.internal(_root);
@@ -5508,6 +5524,12 @@ class Translations$misskey$settings_$en_US {
 	/// en-US: 'It may not be possible to enable this depending on the environment.'
 	String get settingsPersistence_description2 => 'It may not be possible to enable this depending on the environment.';
 
+	/// en-US: 'Automatically play embedded players in URL previews'
+	String get autoplayEmbededPlayerOfUrlPreview => 'Automatically play embedded players in URL previews';
+
+	/// en-US: 'Automatically expand URL previews'
+	String get expandUrlPreviewAutomatically => 'Automatically expand URL previews';
+
 	late final Translations$misskey$settings_$chat_$en_US chat_ = Translations$misskey$settings_$chat_$en_US.internal(_root);
 }
 
@@ -5572,6 +5594,57 @@ class Translations$misskey$preferencesBackup_$en_US {
 
 	/// en-US: 'Force a backup of settings'
 	String get forceBackup => 'Force a backup of settings';
+}
+
+// Path: misskey.followApproval_
+class Translations$misskey$followApproval_$en_US {
+	Translations$misskey$followApproval_$en_US.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Follow approvals'
+	String get groupTitle => 'Follow approvals';
+
+	/// en-US: 'Since all follow requests will require approval, time-based settings will not apply. If you disable the follow approval, the following settings will apply once again.'
+	String get inactiveDescription => 'Since all follow requests will require approval, time-based settings will not apply. If you disable the follow approval, the following settings will apply once again.';
+
+	/// en-US: 'Require approval for follows from newly created accounts'
+	String get title => 'Require approval for follows from newly created accounts';
+
+	/// en-US: 'Even if you have set your account to require approval for new followers, or if you have configured it to hold follow requests from new accounts, follow requests from users you are already following will be automatically approved.'
+	String get autoAcceptDescription => 'Even if you have set your account to require approval for new followers, or if you have configured it to hold follow requests from new accounts, follow requests from users you are already following will be automatically approved.';
+
+	/// en-US: 'Follows from users who have not yet met the specified duration requirement will be held as follow requests. This does not affect existing followers. If automatic approval is enabled for a user you follow, that user will be automatically approved.'
+	String get description => 'Follows from users who have not yet met the specified duration requirement will be held as follow requests. This does not affect existing followers. If automatic approval is enabled for a user you follow, that user will be automatically approved.';
+
+	/// en-US: 'Follows from local users'
+	String get local => 'Follows from local users';
+
+	/// en-US: 'Account age is determined by the length of time that has passed since the account was created on this server.'
+	String get localDescription => 'Account age is determined by the length of time that has passed since the account was created on this server.';
+
+	/// en-US: 'Follows from remote servers'
+	String get remote => 'Follows from remote servers';
+
+	/// en-US: 'The age of an account is determined by the length of time since this server first recognized it, not by the date and time it was created on the originating server.'
+	String get remoteDescription => 'The age of an account is determined by the length of time since this server first recognized it, not by the date and time it was created on the originating server.';
+
+	/// en-US: 'Use default settings (currently disabled)'
+	String get useDefault => 'Use default settings (currently disabled)';
+
+	/// en-US: 'Specified time period'
+	String get custom => 'Specified time period';
+
+	/// en-US: 'Age of accounts requiring approval'
+	String get period => 'Age of accounts requiring approval';
+
+	/// en-US: 'Unit'
+	String get unit => 'Unit';
+
+	/// en-US: 'The period is invalid. Enter a duration of 1 second or longer, within the allowable range.'
+	String get invalidPeriod => 'The period is invalid. Enter a duration of 1 second or longer, within the allowable range.';
 }
 
 // Path: misskey.accountSettings_
@@ -5703,6 +5776,15 @@ class Translations$misskey$announcement_$en_US {
 
 	/// en-US: 'A separate prompt to confirm marking this announcement as read will be displayed if enabled. This announcement will also be excluded from any "Mark all as read" functionality.'
 	String get needConfirmationToReadDescription => 'A separate prompt to confirm marking this announcement as read will be displayed if enabled. This announcement will also be excluded from any "Mark all as read" functionality.';
+
+	/// en-US: 'Date for automatic archiving'
+	String get autoArchiveAt => 'Date for automatic archiving';
+
+	/// en-US: 'This announcement will be automatically archived after the specified date and time. If left blank, it will not be automatically archived.'
+	String get autoArchiveAtDescription => 'This announcement will be automatically archived after the specified date and time. If left blank, it will not be automatically archived.';
+
+	/// en-US: 'The date must be set to a point in the future.'
+	String get autoArchiveAtMustBeInFuture => 'The date must be set to a point in the future.';
 
 	/// en-US: 'Archive announcement'
 	String get end => 'Archive announcement';

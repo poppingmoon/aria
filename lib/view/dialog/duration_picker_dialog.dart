@@ -8,16 +8,22 @@ import '../../i18n/strings.g.dart';
 Future<Duration?> showDurationPickerDialog(
   BuildContext context, {
   Duration? initialDuration,
+  Duration? minDuration = const Duration(seconds: 1),
 }) {
   return showDialog(
     context: context,
-    builder: (context) =>
-        DurationPickerDialog(initialDuration: initialDuration),
+    builder: (context) => DurationPickerDialog(
+      initialDuration: initialDuration,
+      minDuration: minDuration,
+    ),
   );
 }
 
-class const DurationPickerDialog({super.key, final Duration? initialDuration})
-    extends HookWidget {
+class const DurationPickerDialog({
+  super.key,
+  final Duration? initialDuration,
+  final Duration? minDuration = const Duration(seconds: 1),
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final daysController = useTextEditingController(
@@ -32,6 +38,28 @@ class const DurationPickerDialog({super.key, final Duration? initialDuration})
     final secondsController = useTextEditingController(
       text: ((initialDuration?.inSeconds ?? 0) % 60).toString(),
     );
+    final duration = useState(initialDuration ?? Duration.zero);
+    useEffect(() {
+      void callback() {
+        duration.value = Duration(
+          days: int.tryParse(daysController.text) ?? 0,
+          hours: int.tryParse(hoursController.text) ?? 0,
+          minutes: int.tryParse(minutesController.text) ?? 0,
+          seconds: int.tryParse(secondsController.text) ?? 0,
+        );
+      }
+
+      daysController.addListener(callback);
+      hoursController.addListener(callback);
+      minutesController.addListener(callback);
+      secondsController.addListener(callback);
+      return () {
+        daysController.removeListener(callback);
+        hoursController.removeListener(callback);
+        minutesController.removeListener(callback);
+        secondsController.removeListener(callback);
+      };
+    }, []);
     final theme = Theme.of(context);
 
     return AlertDialog(
@@ -83,14 +111,12 @@ class const DurationPickerDialog({super.key, final Duration? initialDuration})
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.done,
-            onSubmitted: (_) => context.pop(
-              Duration(
-                days: int.tryParse(daysController.text) ?? 0,
-                hours: int.tryParse(hoursController.text) ?? 0,
-                minutes: int.tryParse(minutesController.text) ?? 0,
-                seconds: int.tryParse(secondsController.text) ?? 0,
-              ),
-            ),
+            onSubmitted: (_) {
+              if (minDuration case final minDuration
+                  when minDuration == null || minDuration <= duration.value) {
+                context.pop(duration.value);
+              }
+            },
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
@@ -98,14 +124,12 @@ class const DurationPickerDialog({super.key, final Duration? initialDuration})
       ),
       actions: [
         ElevatedButton(
-          onPressed: () => context.pop(
-            Duration(
-              days: int.tryParse(daysController.text) ?? 0,
-              hours: int.tryParse(hoursController.text) ?? 0,
-              minutes: int.tryParse(minutesController.text) ?? 0,
-              seconds: int.tryParse(secondsController.text) ?? 0,
-            ),
-          ),
+          onPressed: switch (minDuration) {
+            final minDuration
+                when minDuration == null || minDuration <= duration.value =>
+              () => context.pop(),
+            _ => null,
+          },
           child: Text(t.misskey.ok),
         ),
         ElevatedButton(

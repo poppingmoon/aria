@@ -25,11 +25,20 @@ class const PrivacyPage({super.key, required final Account account})
     final settings = ref.watch(accountSettingsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).value;
     final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
+    final isFollowApprovalAvailable =
+        i?.followApprovalLocalSeconds != null ||
+        i?.followApprovalRemoteSeconds != null ||
+        ref.watch(
+          iPropertiesProvider(account).select(
+            (props) =>
+                props.value?.contains('followApprovalLocalSeconds') ?? false,
+          ),
+        );
     final isLockdownAvailable =
         i?.requireSigninToViewContents != null ||
         i?.makeNotesFollowersOnlyBefore != null ||
         i?.makeNotesHiddenBefore != null ||
-        (ref.watch(
+        ref.watch(
           endpointParametersProvider(account, 'i/update').select(
             (params) => switch (params.value) {
               final params? =>
@@ -40,7 +49,7 @@ class const PrivacyPage({super.key, required final Account account})
               _ => false,
             },
           ),
-        ));
+        );
     final theme = Theme.of(context);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
@@ -87,13 +96,32 @@ class const PrivacyPage({super.key, required final Account account})
                   ),
                 ),
               ),
-              if (i.isLocked)
+              if (isFollowApprovalAvailable)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.followApproval_.title),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () => context.push(
+                        '/settings/accounts/$account/privacy/follow-approval',
+                      ),
+                    ),
+                  ),
+                ),
+              if (i.isLocked || isFollowApprovalAvailable)
                 Center(
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     width: maxContentWidth,
                     child: SwitchListTile(
                       title: Text(t.misskey.autoAcceptFollowed),
+                      subtitle: isFollowApprovalAvailable
+                          ? Text(
+                              t.misskey.followApproval_.autoAcceptDescription,
+                            )
+                          : null,
                       value: i.autoAcceptFollowed,
                       onChanged: (value) => futureWithDialog(
                         context,

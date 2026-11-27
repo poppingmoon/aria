@@ -475,6 +475,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get editList => 'Modifier la liste';
 	@override String get selectChannel => 'Sélectionner un canal';
 	@override String get selectAntenna => 'Sélectionner une antenne';
+	@override String get selectClip => 'Sélectionnez un clip';
 	@override String get editAntenna => 'Modifier l\'antenne';
 	@override String get createAntenna => 'Créer une antenne';
 	@override String get selectWidget => 'Sélectionner un widget';
@@ -504,6 +505,9 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get loginFailed => 'Échec de la connexion';
 	@override String get showOnRemote => 'Voir sur l’instance distante';
 	@override String get continueOnRemote => 'Continuer sur l\'instance distante';
+	@override String get chooseServerOnMisskeyHub => 'Choisir le serveur sur Misskey Hub';
+	@override String get specifyServerHost => 'Spécfier le domaine du serveur directement';
+	@override String get inputHostName => 'Entrez le domaine';
 	@override String get general => 'Général';
 	@override String get wallpaper => 'Fond d’écran';
 	@override String get setWallpaper => 'Définir le fond d’écran';
@@ -530,6 +534,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get stopActivityDelivery => 'Arrêter l’envoi de l’activité';
 	@override String get blockThisInstance => 'Bloquer cette instance';
 	@override String get silenceThisInstance => 'Mettre cette instance en sourdine';
+	@override String get mediaSilenceThisInstance => 'Mettre les médias de cette instance en sourdine';
 	@override String get operations => 'Opérations';
 	@override String get software => 'Logiciel';
 	@override String get softwareName => 'Nom du logiciel';
@@ -552,9 +557,10 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get blockedInstancesDescription => 'Listez les instances que vous désirez bloquer, une par ligne. Ces instances ne seront plus en capacité d\'interagir avec votre instance.';
 	@override String get silencedInstances => 'Instances mises en sourdine';
 	@override String get silencedInstancesDescription => 'Énumérer les noms d\'hôte des instances à mettre en sourdine. Tous les comptes des instances énumérées seront traités comme mis en sourdine, ne peuvent faire que des demandes de suivi et ne peuvent pas mentionner les comptes locaux s\'ils ne sont pas suivis. Cela n\'affectera pas les instances bloquées.';
-	@override String get mediaSilencedInstances => 'Médias silencieux sur ces instances';
+	@override String get mediaSilencedInstances => 'Instances dont les médias sont mis en sourdine';
 	@override String get mediaSilencedInstancesDescription => 'Liste des noms de serveurs où vous voulez que les médias soient silencieux, séparés par un retour à la ligne.\nTous les comptes des instances listées seront considérés comme sensibles, et ne peuvent pas utilisés d\'émojis personnalisés. Ceci n\'affectera pas les serveurs bloquées.';
 	@override String get federationAllowedHosts => 'Serveurs qui autorisent la fédération';
+	@override String get federationAllowedHostsDescription => 'Configurez les domaines des instances autorisées à se joindre à la fédération, séparés par des sauts de ligne.';
 	@override String get muteAndBlock => 'Masqué·e·s / Bloqué·e·s';
 	@override String get mutedUsers => 'Utilisateur·rice·s en sourdine';
 	@override String get blockedUsers => 'Utilisateur·rice·s bloqué·e·s';
@@ -564,6 +570,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get pinLimitExceeded => 'Vous ne pouvez plus épingler d’autres notes.';
 	@override String get done => 'Terminé';
 	@override String get processing => 'Traitement en cours';
+	@override String get preprocessing => 'Tout se prépare…';
 	@override String get preview => 'Aperçu';
 	@override String get default_ => 'Par défaut';
 	@override String defaultValueIs({required Object value}) => 'Par défaut : ${value}';
@@ -609,9 +616,12 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get uploadFromUrlDescription => 'URL du fichier que vous souhaitez téléverser';
 	@override String get uploadFromUrlRequested => 'Téléversement demandé';
 	@override String get uploadFromUrlMayTakeTime => 'Le téléversement de votre fichier peut prendre un certain temps.';
+	@override String uploadNFiles({required Object n}) => 'Téléverser ${n} fichiers';
 	@override String get explore => 'Découvrir';
 	@override String get messageRead => 'Lu';
+	@override String get readAllChatMessages => 'Marquer tous les messages comme lus';
 	@override String get noMoreHistory => 'Il n’y a plus d’historique';
+	@override String get startChat => 'Envoyer un message';
 	@override String nUsersRead({required Object n}) => 'Lu par ${n} personnes';
 	@override String agreeTo({required Object x0}) => 'J’accepte ${x0}';
 	@override String get agree => 'Accepter';
@@ -881,6 +891,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get showFixedPostFormInChannel => 'Afficher le formulaire de publication en haut du fil (canaux)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Afficher les réponses des nouvelles personnes que vous suivez dans le fil par défaut';
 	@override String get newNoteRecived => 'Voir les nouvelles notes';
+	@override String get newNote => 'Nouvelle Note';
 	@override String get sounds => 'Sons';
 	@override String get sound => 'Sons';
 	@override String get listen => 'Écouter';
@@ -892,6 +903,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get notUseSound => 'Ne pas émettre de son';
 	@override String get useSoundOnlyWhenActive => 'Émettre des sons uniquement quand Misskey est active';
 	@override String get details => 'Détails';
+	@override String get renoteDetails => 'Détails de la Renote';
 	@override String get chooseEmoji => 'Choisissez un émoji';
 	@override String get unableToProcess => 'L’opération n’a pas pu être complétée.';
 	@override String get recentUsed => 'Utilisé récemment';
@@ -989,6 +1001,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get testEmail => 'Tester la distribution de courriel';
 	@override String get wordMute => 'Filtre de mots';
 	@override String get hardWordMute => 'Filtre de mots dur';
+	@override String get showMutedWord => 'Afficher les mots masqués';
 	@override String get regexpError => 'Erreur d’expression régulière';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Une erreur s\'est produite dans l\'expression régulière sur la ligne ${line} de votre mot muet ${tab} :';
 	@override String get instanceMute => 'Instance en sourdine';
@@ -1347,6 +1360,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get permissionDeniedErrorDescription => 'Ce compte n\'a pas la permission d\'effectuer cette opération.';
 	@override String get preset => 'Préréglage';
 	@override String get selectFromPresets => 'Sélectionner à partir des préréglages';
+	@override String get custom => 'Personnalisé';
 	@override String get achievements => 'Accomplissements';
 	@override String get gotInvalidResponseError => 'Réponse du serveur invalide';
 	@override String get gotInvalidResponseErrorDescription => 'Il se peut que le serveur soit hors ligne ou en maintenance. Veuillez réessayer plus tard.';
@@ -1442,6 +1456,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get preventAiLearningDescription => 'Demander aux robots d\'indexation de ne pas utiliser le contenu publié, tel que les notes et les images, dans l\'apprentissage automatique d\'IA générative. Cela est réalisé en incluant le drapeau « noai » dans la réponse HTML. Une prévention complète n\'est toutefois pas possible, car il est au robot d\'indexation de respecter cette demande.';
 	@override String get options => 'Options';
 	@override String get specifyUser => 'Spécifier l\'utilisateur·rice';
+	@override String get lookupConfirm => 'Voulez-vous effectuer la recherche ?';
 	@override String get openTagPageConfirm => 'Ouvrir une page d\'hashtags ?';
 	@override String get specifyHost => 'Spécifier un serveur distant';
 	@override String get failedToPreviewUrl => 'Aperçu d\'URL échoué';
@@ -1602,6 +1617,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get createUserSpecifiedNote => 'Créer une note directe';
 	@override String get widgets => 'Widgets';
 	@override String get presets => 'Préréglage';
+	@override String get viewRenotedChannel => 'Afficher le canal de la Renote';
 	@override String get previewingThemeRestore => 'Restaurer';
 	@override late final _Translations$misskey$imageEditing_$fr_FR imageEditing_ = _Translations$misskey$imageEditing_$fr_FR._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$fr_FR imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$fr_FR._(_root);
@@ -2963,6 +2979,7 @@ class _Translations$misskey$remoteLookupErrors_$fr_FR extends Translations$missk
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override late final _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$fr_FR federationNotAllowed_ = _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$fr_FR._(_root);
 	@override late final _Translations$misskey$remoteLookupErrors_$noSuchObject_$fr_FR noSuchObject_ = _Translations$misskey$remoteLookupErrors_$noSuchObject_$fr_FR._(_root);
 }
 
@@ -3254,6 +3271,7 @@ class _Translations$misskey$role_$options_$fr_FR extends Translations$misskey$ro
 	@override String get antennaMax => 'Nombre maximum d\'antennes';
 	@override String get wordMuteMax => 'Nombre maximal de caractères dans le filtre de mots';
 	@override String get canUseTranslator => 'Usage de la fonctionnalité de traduction';
+	@override String get canCreateChannel => 'Créer un canal';
 	@override String get avatarDecorationLimit => 'Nombre maximal de décorations d\'avatar';
 	@override String get canImportAntennas => 'Autoriser l\'importation d\'antennes';
 }
@@ -3570,6 +3588,16 @@ class _Translations$misskey$dataSaver_$code_$fr_FR extends Translations$misskey$
 	// Translations
 	@override String get title => 'Mise en évidence du code';
 	@override String get description => 'Si la notation de mise en évidence du code est utilisée, par exemple dans la MFM, elle ne sera pas chargée tant qu\'elle n\'aura pas été tapée. La mise en évidence du code nécessite le chargement du fichier de définition de chaque langue à mettre en évidence, mais comme ces fichiers ne sont plus chargés automatiquement, on peut s\'attendre à une réduction du trafic de données.';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$fr_FR extends Translations$misskey$remoteLookupErrors_$federationNotAllowed_$en_US {
+	_Translations$misskey$remoteLookupErrors_$federationNotAllowed_$fr_FR._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Impossible de communiquer avec ce serveur';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
